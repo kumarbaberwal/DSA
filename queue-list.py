@@ -1,0 +1,16 @@
+queue=[]
+queue.append('K')
+queue.append('u')
+queue.append('m')
+queue.append('a')
+queue.append('r')
+print('Initial Queue: ')
+print(queue)
+print('Elements dequeue for queue: ')
+print(queue.pop(0))
+print(queue.pop(0))
+print(queue.pop(0))
+print(queue.pop(0))
+print('Queue after removing Elements: ')
+print(queue)
+
