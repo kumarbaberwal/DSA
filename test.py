@@ -1,23 +1,47 @@
-a = [8, 4, 9, 2, 10, 3, 0, 10, 1, 12]
-def partition(a,start,end):
-    lb=start
-    ub=end
-    pivot=a[lb]
-    while(lb<ub):
-        while (a[lb]<=pivot):
-            lb=lb+1
-        while (a[ub]>pivot):
-            ub=ub-1
-        if(lb<ub):
-            a[lb],a[ub]=a[ub],a[lb]
-    a[start],a[ub]=a[ub],a[start]
-    return ub
+class Node:
+    def __init__(self,data) -> None:
+        self.data=data
+        self.pointer=None
 
-def quicksort(a,start,end):
-    if(start<end):
-        index=partition(a,start,end)
-        quicksort(a,start,index-1)
-        quicksort(a,index+1,end)
+class LinkedList:
+    def __init__(self) -> None:
+        self.head=None
 
-quicksort(a,0,len(a)-1)
-print(a)
+    def InsertAtEnd(self,data):
+        NewNode=Node(data)
+        if self.head is None:
+            self.head=NewNode
+            return
+        else:
+            pointer=self.head
+            while pointer:
+                temp=pointer
+                pointer=pointer.pointer
+            temp.pointer=NewNode
+    def display(self):
+        pointer=self.head
+        while pointer:
+            print(pointer.data)
+            pointer=pointer.pointer
+
+    def InsertAtStart(self,data):
+        NewNode=Node(data)
+        if self.head==None:
+            self.head=NewNode
+            return
+        else:
+            NewNode.pointer=self.head
+            self.head=NewNode
+
+linklist=LinkedList()
+linklist.InsertAtEnd(4)
+linklist.InsertAtEnd(5)
+linklist.InsertAtEnd(6)
+linklist.InsertAtEnd(7)
+
+# linklist.display()
+
+linklist.InsertAtStart(1)
+linklist.InsertAtStart(2)
+linklist.InsertAtStart(3)
+linklist.display()
