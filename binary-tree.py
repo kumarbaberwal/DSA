@@ -14,20 +14,20 @@ class BinaryTree:
         if self.root==None:
             self.root=root
         else:
-            self.InsertRecursively(self.root,root)
+            self._InsertRecursively(self.root,root)
 
 
-    def InsertRecursively(self,node,data):
+    def _InsertRecursively(self,node,data):
         if data.data<node.data:
             if node.left==None:
                 self.left=data
             else:
-                self.InsertRecursively(self.left,data)
+                self._InsertRecursively(self.left,data)
         else:
             if node.right==None:
                 self.right=data
             else:
-                self.InsertRecursively(self.right,data)
+                self._InsertRecursively(self.right,data)
 
 
     def display(self,node):

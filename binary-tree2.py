@@ -22,11 +22,11 @@ class Node:
                 else:
                     self.right.insert(data)
 
-def preorder(self):
-    if self is not None:
-        print(self.data)
-        preorder(self.left)
-        preorder(self.right)
+    def preorder(self,node):
+        if node is not None:
+            print(node.data)
+            self.preorder(node.left)
+            self.preorder(node.right)
 
 
 bt=Node(5)
@@ -36,4 +36,4 @@ bt.insert(2)
 bt.insert(7)
 bt.insert(1)
 
-preorder(bt)
+bt.preorder(bt)
