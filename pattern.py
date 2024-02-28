@@ -17,3 +17,11 @@ for i in range(5):
     print()
 print()
 
+
+# for i in range(5):
+#     for j in range(2):
+#         if j>i:
+#             j-=1
+#         else:
+#             j+=1
+#         print(" "*j,end="")
