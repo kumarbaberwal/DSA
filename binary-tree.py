@@ -8,40 +8,45 @@ class TreeNode:
 class BinaryTree:
     def __init__(self) -> None:
         self.root=None
+class TreeNode:
+    def __init__(self, data) -> None:
+        self.data = data
+        self.left = None
+        self.right = None
 
-    def Insert(self,data):
-        root=TreeNode(data)
-        if self.root==None:
-            self.root=root
+class BinaryTree:
+    def __init__(self) -> None:
+        self.root = None
+
+    def insert(self, data):
+        if not self.root:
+            self.root = TreeNode(data)
         else:
-            self._InsertRecursively(self.root,root)
+            self.insertrecursively(self.root, TreeNode(data))
 
-
-    def _InsertRecursively(self,node,data):
-        if data.data<node.data:
-            if node.left==None:
-                self.left=data
+    def insertrecursively(self, node, new_node):
+        if new_node.data < node.data:
+            if not node.left:
+                node.left = new_node
             else:
-                self._InsertRecursively(self.left,data)
+                self.insertrecursively(node.left, new_node)
         else:
-            if node.right==None:
-                self.right=data
+            if not node.right:
+                node.right = new_node
             else:
-                self._InsertRecursively(self.right,data)
+                self.insertrecursively(node.right, new_node)
 
-
-    def display(self,node):
+    def display(self, node):
         if node is not None:
             self.display(node.left)
             print(node.data)
             self.display(node.right)
 
-
-bt=BinaryTree()
-bt.Insert(4)
-bt.Insert(9)
-bt.Insert(2)
-bt.Insert(7)
-bt.Insert(1)
+bt = BinaryTree()
+bt.insert(4)
+bt.insert(9)
+bt.insert(2)
+bt.insert(7)
+bt.insert(1)
 
 bt.display(bt.root)

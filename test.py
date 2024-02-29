@@ -1,47 +1,42 @@
-class Node:
-    def __init__(self,data) -> None:
-        self.data=data
-        self.pointer=None
+class TreeNode:
+    def __init__(self, data) -> None:
+        self.data = data
+        self.left = None
+        self.right = None
 
-class LinkedList:
+class BinaryTree:
     def __init__(self) -> None:
-        self.head=None
+        self.root = None
 
-    def InsertAtEnd(self,data):
-        NewNode=Node(data)
-        if self.head is None:
-            self.head=NewNode
-            return
+    def insert(self, data):
+        if not self.root:
+            self.root = TreeNode(data)
         else:
-            pointer=self.head
-            while pointer:
-                temp=pointer
-                pointer=pointer.pointer
-            temp.pointer=NewNode
-    def display(self):
-        pointer=self.head
-        while pointer:
-            print(pointer.data)
-            pointer=pointer.pointer
+            self._insert_recursively(self.root, TreeNode(data))
 
-    def InsertAtStart(self,data):
-        NewNode=Node(data)
-        if self.head==None:
-            self.head=NewNode
-            return
+    def _insert_recursively(self, node, new_node):
+        if new_node.data < node.data:
+            if not node.left:
+                node.left = new_node
+            else:
+                self._insert_recursively(node.left, new_node)
         else:
-            NewNode.pointer=self.head
-            self.head=NewNode
+            if not node.right:
+                node.right = new_node
+            else:
+                self._insert_recursively(node.right, new_node)
 
-linklist=LinkedList()
-linklist.InsertAtEnd(4)
-linklist.InsertAtEnd(5)
-linklist.InsertAtEnd(6)
-linklist.InsertAtEnd(7)
+    def display(self, node):
+        if node is not None:
+            self.display(node.left)
+            print(node.data)
+            self.display(node.right)
 
-# linklist.display()
+bt = BinaryTree()
+bt.insert(4)
+bt.insert(9)
+bt.insert(2)
+bt.insert(7)
+bt.insert(1)
 
-linklist.InsertAtStart(1)
-linklist.InsertAtStart(2)
-linklist.InsertAtStart(3)
-linklist.display()
+bt.display(bt.root)
