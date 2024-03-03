@@ -54,6 +54,13 @@ class BinaryTree:
                 node=node.left
             print(node.data)
 
+    def minimun1(self):
+        node=self.root
+        while node!=None:
+            left=node
+            node=node.left
+        print(left.data)
+
     def maximum(self):
         root=self.root
         if root is None:
@@ -62,6 +69,13 @@ class BinaryTree:
             while root.right is not None:
                 root=root.right
             print(root.data)
+
+    def maximum1(self):
+        root=self.root
+        while root!=None:
+            node=root
+            root=root.right
+        print(node.data)
 
 bt = BinaryTree()
 bt.insert(4)
@@ -74,6 +88,9 @@ bt.display(bt.root)
 print()
 print('Minimun Element: ',end=' ')
 bt.minimum()
-print()
 print('Maximum Element: ',end=' ')
 bt.maximum()
+print('Minimun Element: ',end=' ')
+bt.minimun1()
+print('Maximum Element: ',end=' ')
+bt.maximum1()
