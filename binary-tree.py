@@ -40,6 +40,7 @@ class BinaryTree:
         root=self.root
         if root is None:
             print('Binary Tree is Empty.')
+            return
         if node is not None:
             self.inorder(node.left)
             print(node.data)
@@ -49,6 +50,7 @@ class BinaryTree:
         root=self.root  
         if root is None:
             print('Binary Tree is Empty!')
+            return
         if node is not None:
             print(node.data)
             self.preorder(node.left)
@@ -58,6 +60,7 @@ class BinaryTree:
         root=self.root
         if root is None:
             print('Binary Tree is Empty!')
+            return
         if node is not None:
             self.postorder(node.left)
             self.postorder(node.right)
