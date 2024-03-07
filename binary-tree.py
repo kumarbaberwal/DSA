@@ -36,14 +36,32 @@ class BinaryTree:
             else:
                 self.insertrecursively(node.right, new_node)
 
-    def display(self, node):
+    def inorder(self, node):
         root=self.root
         if root is None:
             print('Binary Tree is Empty.')
         if node is not None:
-            self.display(node.left)
+            self.inorder(node.left)
             print(node.data)
-            self.display(node.right)
+            self.inorder(node.right)
+
+    def preorder(self, node):
+        root=self.root  
+        if root is None:
+            print('Binary Tree is Empty!')
+        if node is not None:
+            print(node.data)
+            self.preorder(node.left)
+            self.preorder(node.right)
+
+    def postorder(self, node):
+        root=self.root
+        if root is None:
+            print('Binary Tree is Empty!')
+        if node is not None:
+            self.postorder(node.left)
+            self.postorder(node.right)
+            print(node.data)
 
     def minimum(self):
         node=self.root
@@ -83,14 +101,17 @@ bt.insert(9)
 bt.insert(2)
 bt.insert(7)
 bt.insert(1)
+bt.insert(3)
 
-bt.display(bt.root)
-print()
-print('Minimun Element: ',end=' ')
-bt.minimum()
-print('Maximum Element: ',end=' ')
-bt.maximum()
-print('Minimun Element: ',end=' ')
-bt.minimun1()
-print('Maximum Element: ',end=' ')
-bt.maximum1()
+# bt.inorder(bt.root)
+# bt.preorder(bt.root)
+bt.postorder(bt.root)
+# print()
+# print('Minimun Element: ',end=' ')
+# bt.minimum()
+# print('Maximum Element: ',end=' ')
+# bt.maximum()
+# print('Minimun Element: ',end=' ')
+# bt.minimun1()
+# print('Maximum Element: ',end=' ')
+# bt.maximum1()
