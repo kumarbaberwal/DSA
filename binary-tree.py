@@ -105,13 +105,10 @@ class BinaryTree:
         elif item==node.data:
             print("Item Is Present IN The Binary Tree.")
             return
-        elif node is not None:
-            if item<node.data:
-                self.search(node.left,item)
-            else:
-                self.search(node.right,item)
+        elif item<node.data:
+            return self.search(node.left,item)
         else:
-            print("Item is not Present in the Binary Tree.")
+            return self.search(node.right,item)
 
 bt = BinaryTree()
 bt.insert(4)
@@ -136,4 +133,4 @@ bt.insert(3)
 
 
 #searching items in the binary tree
-bt.search(bt.root,12)
+bt.search(bt.root,1)
