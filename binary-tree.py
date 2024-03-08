@@ -98,6 +98,21 @@ class BinaryTree:
             root=root.right
         print(node.data)
 
+    def search(self,node,item):
+        if node is None:
+            print("Item is not Present in the Binary Tree.")
+            return
+        elif item==node.data:
+            print("Item Is Present IN The Binary Tree.")
+            return
+        elif node is not None:
+            if item<node.data:
+                self.search(node.left,item)
+            else:
+                self.search(node.right,item)
+        else:
+            print("Item is not Present in the Binary Tree.")
+
 bt = BinaryTree()
 bt.insert(4)
 bt.insert(9)
@@ -108,7 +123,7 @@ bt.insert(3)
 
 # bt.inorder(bt.root)
 # bt.preorder(bt.root)
-bt.postorder(bt.root)
+# bt.postorder(bt.root)
 # print()
 # print('Minimun Element: ',end=' ')
 # bt.minimum()
@@ -118,3 +133,7 @@ bt.postorder(bt.root)
 # bt.minimun1()
 # print('Maximum Element: ',end=' ')
 # bt.maximum1()
+
+
+#searching items in the binary tree
+bt.search(bt.root,12)
