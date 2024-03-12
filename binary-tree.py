@@ -110,6 +110,35 @@ class BinaryTree:
         else:
             return self.search(node.right,item)
 
+    def delete(self,data):
+        self._delete(self.root,data)
+
+    def _delete(self,node,data):
+        if node is None:
+            return node
+
+        if data< node.data:
+            node.left=self._delete(node.left,data)
+        elif data>node.data:
+            node.right=self._delete(node.right,data)
+        else:
+            if node.left is None:
+                return node.right
+            elif node.right is None:
+                return node.left
+            
+            node.data=self.min_value_node(node.right)
+            node.right=self._delete(node.right,node.data)
+        return node
+
+    def min_value_node(self,node):
+        current=node
+        while current.left is not None:
+            current=current.left
+
+        return current.data
+
+
 bt = BinaryTree()
 bt.insert(4)
 bt.insert(9)
@@ -133,4 +162,11 @@ bt.insert(3)
 
 
 #searching items in the binary tree
-bt.search(bt.root,1)
+# bt.search(bt.root,1)
+
+bt.inorder(bt.root)
+print()
+bt.delete(2)
+# print(bt.delete(2))
+print()
+bt.inorder(bt.root)
