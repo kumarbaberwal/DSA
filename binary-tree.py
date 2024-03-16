@@ -139,6 +139,23 @@ class BinaryTree:
         return current.data
 
 
+    def height(self):
+        self.length=0
+        root=self.root
+        if root is None:
+            print("Binary Tree is Empty!")
+            return
+        else:
+            self._height(root)
+            print('The Height of Binary Tree is : ',self.length)
+
+    def _height(self,node):
+        if node is not None:
+            self._height(node.left)
+            self._height(node.right)
+            self.length+=1
+
+
 bt = BinaryTree()
 bt.insert(4)
 bt.insert(9)
@@ -170,3 +187,6 @@ bt.delete(2)
 # print(bt.delete(2))
 print()
 bt.inorder(bt.root)
+
+print()
+bt.height()
