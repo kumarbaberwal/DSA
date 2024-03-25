@@ -20,22 +20,18 @@ for i in range((len(arr)//2)-1,-1,-1):
 
 
 print(arr)
-
-val=arr.append(7)
-
 def insert(arr,n,val):
+    arr.append(val)
     i=n
     while i>0:
-        parent=i//2
+        parent=(i-1)//2
         if arr[parent]<arr[i]:
             arr[parent],arr[i]=arr[i],arr[parent]
             i=parent
         else:
             return
-
-insert(arr,len(arr)-1,val)
+insert(arr,len(arr),7)
 print(arr)
-val2=arr.append(20)
-insert(arr,len(arr)-1,val2)
+insert(arr,len(arr),20)
 
 print(arr)
