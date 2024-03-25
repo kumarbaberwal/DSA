@@ -15,9 +15,27 @@ def heapify(arr,n,i):
         heapify(arr,n,largest)
 
 
-n=len(arr)
-for i in range((n//2)-1,-1,-1):
-    heapify(arr,n,i)
+for i in range((len(arr)//2)-1,-1,-1):
+    heapify(arr,len(arr),i)
 
+
+print(arr)
+
+val=arr.append(7)
+
+def insert(arr,n,val):
+    i=n
+    while i>0:
+        parent=i//2
+        if arr[parent]<arr[i]:
+            arr[parent],arr[i]=arr[i],arr[parent]
+            i=parent
+        else:
+            return
+
+insert(arr,len(arr)-1,val)
+print(arr)
+val2=arr.append(20)
+insert(arr,len(arr)-1,val2)
 
 print(arr)
