@@ -35,3 +35,11 @@ print(arr)
 insert(arr,len(arr),20)
 
 print(arr)
+
+def deletion(arr):
+    arr[0]=arr.pop()
+    heapify(arr,len(arr)-1,0)
+
+deletion(arr)
+deletion(arr)
+print(arr)
