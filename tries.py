@@ -16,7 +16,7 @@ class Tries:
         node=self.root
         length=len(character)
         for i in range(length):
-            index=self._charToIndex(character[i])
+            index=ord(character[i])-ord('a')
             if not node.children[index]:
                 node.children[index]=TrieNode()
             node=node.children[index]
@@ -26,7 +26,7 @@ class Tries:
         root=self.root
         lenght=len(character)
         for i in range(lenght):
-            index=self._charToIndex(character[i])   
+            index=ord(character[i])-ord('a')   
             if not root.children[index]:
                 return False
             root=root.children[index]
