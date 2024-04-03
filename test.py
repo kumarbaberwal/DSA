@@ -1,26 +1,37 @@
-arr=[8,1,9,2,4,3,5,7,6]
+class TrieNode:
+    def __init__(self) -> None:
+        self.children=[None]*26
+        self.isEndOfWord=False
 
-def partition(arr,start,end):
-    i=start
-    j=end
-    pivot=arr[start]
-    while (i<j):
-        while arr[i]<=pivot:
-            i+=1
-        while arr[j]>pivot:
-            j-=1
-        
-        if i<j:
-            arr[i],arr[j]=arr[j],arr[i]
-    arr[start],arr[j]=arr[j],arr[start]
-    return j
-
-def quicksort(arr,start,end):
-    if start<end:
-        index=partition(arr,start,end)
-        quicksort(arr,start,index-1)
-        quicksort(arr,index+1,end)
-
-quicksort(arr,0,len(arr)-1)
-
-print(arr)
+class Trie:
+    def __init__(self) -> None:
+        self.root=TrieNode()
+    
+    def insert(self,character):
+        node=self.root
+        lenght=len(character)
+        for i in range(lenght):
+            index=ord(character[i])-ord('a')
+            if not node.children[index]:
+                node.children[index]=TrieNode()
+            node=node.children[index]
+        node.isEndOfWord=True
+    
+    def search(self,character):
+        node=self.root
+        length=len(character)
+        for i in range(length):
+            index=ord(character[i])-ord('a')
+            if not node.children[index]:
+                return False
+            node=node.children[index]
+        return node.isEndOfWord
+    
+trie=Trie()
+trie.insert('kumar')
+trie.insert('shivam')
+trie.insert('kumal')
+print(trie.search('kumal'))
+print(trie.search('kuma'))
+print(trie.search('shiv'))
+print(trie.search('shivam'))
