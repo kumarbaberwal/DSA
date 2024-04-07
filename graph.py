@@ -7,32 +7,33 @@
 
 # Graphs using adjacency list 
 
-def addedge(graph, src, dest):
-    graph[src].append(dest)
+def addedge(graph1, src, dest):
+    graph1[src].append(dest)
+    print(graph1)
 
 v=4
 
 def graph(v, edges, noOfEdges):
-    graph=[0]*v
+    graph1=[0]*v
 
-    for i in range(len(graph)):
-        graph[i]=[]
+    for i in range(len(graph1)):
+        graph1[i]=[]
 
     for i in range(noOfEdges):
-        addedge(graph,edges[i][0],edges[i][1])
+        addedge(graph1,edges[i][0],edges[i][1])
 
-    adjList(graph,v)
+    adjList(graph1,v)
 
-def adjList(graph,v):
+def adjList(graph1,v):
     for i in range(v):
         print(i,' -> ',end='')
-        for x in graph[i]:
+        for x in graph1[i]:
             print(x, " ",end='')
 
         print()
 
 edges=[[0,2],[1,2],[1,3],[2,0],[2,1],[2,3],[3,1],[3,2]]
 
-noOfEdges=8
-
+noOfEdges=len(edges)
+print(noOfEdges)
 graph(v,edges,noOfEdges)
