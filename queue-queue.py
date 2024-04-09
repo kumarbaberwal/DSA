@@ -20,3 +20,4 @@ print(q.get())
 # print(q.get()) #it also stuck the program in between 
 print('Queue after removing elements: ')
 print(q)
+print(q.empty())
