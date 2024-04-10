@@ -26,6 +26,8 @@ def graph(vertices, edges, noOfEdges):
     arr=[False]*7
     # print(arr)
     # print(adj)
-    dfs(adj, 0, arr)
+    for i in range(vertices):
+        if arr[i]==False:
+            dfs(adj, i, arr)
 
 graph(vertices, edges, noOfEdges)
