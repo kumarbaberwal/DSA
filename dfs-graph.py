@@ -4,8 +4,17 @@ vertices=7
 
 def addEdge(adj, src, desc):
     adj[src].append(desc)
-    print(adj)
+    # print(adj)
 
+def dfs(adj, current, arr):
+    print(current,end=' ')
+    arr[current]=True
+    
+    for i in range(len(adj[current])):
+        curr=adj[current][i]
+        if arr[curr]==False:
+            dfs(adj, curr, arr)
+            
 
 def graph(vertices, edges, noOfEdges):
     adj=[[] for i in range(vertices)]
@@ -14,7 +23,9 @@ def graph(vertices, edges, noOfEdges):
         addEdge(adj, edges[i][0], edges[i][1])
 
 
-graph(vertices, edges, noOfEdges)
+    arr=[False]*7
+    # print(arr)
+    # print(adj)
+    dfs(adj, 0, arr)
 
-def dfs(adj, current, arr):
-    
+graph(vertices, edges, noOfEdges)
