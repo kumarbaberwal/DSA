@@ -15,6 +15,17 @@ def dfs(adj, current, arr):
         if arr[curr]==False:
             dfs(adj, curr, arr)
             
+def printAllPaths(adj:list[list], current:int, arr:list[bool], pathstring:str, target:int):
+    print(pathstring)
+    if current==target:
+        print(pathstring)
+        return
+    for i in range(len(adj[current])):
+        curr=adj[current][i]
+        if arr[curr]==False:
+            arr[curr]=True
+            printAllPaths(adj, curr, arr, pathstring=pathstring+str(curr), target=target)
+            arr[curr]=False
 
 def graph(vertices, edges, noOfEdges):
     adj=[[] for i in range(vertices)]
@@ -29,5 +40,7 @@ def graph(vertices, edges, noOfEdges):
     for i in range(vertices):
         if arr[i]==False:
             dfs(adj, i, arr)
+    print()
+    printAllPaths(adj, 0, arr, "0", 5)
 
 graph(vertices, edges, noOfEdges)
