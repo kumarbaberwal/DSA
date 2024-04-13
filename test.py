@@ -1,42 +1,39 @@
-# Python3 program to represent undirected 
-# and weighted graph. The program basically 
-# prints adjacency list representation of graph
+edges = [[0,1],[0,2],[1,0],[1,3],[2,0],[2,4],[3,1],[3,4],[3,5],[4,2],[4,3],[4,5],[5,3],[5,4],[5,6],[6,5]]
+noOfEdges = len(edges)
+vertices = 7
 
-# To add an edge
-def addEdge(adj, u, v, wt):
-	
-	adj[u].append([v, wt])
-	adj[v].append([u, wt])
-	return adj
+def addEdge(adj, src, desc):
+    adj[src].append(desc)
 
-# Print adjacency list representation of graph
-def printGraph(adj, V):
-	
-	v, w = 0, 0
-	for u in range(V):
-		print("Node", u, "makes an edge with")
+def dfs(adj, current, arr):
+    arr[current] = True
+    for neighbor in adj[current]:
+        if not arr[neighbor]:
+            dfs(adj, neighbor, arr)
 
-		for it in adj[u]:
-			v = it[0]
-			w = it[1]
-			print("\tNode", v, "with edge weight =", w)
-			
-		print()
+def printAllPaths(adj, current, arr, pathstring, target):
+    if current == target:
+        print(pathstring)
+        return
+    arr[current] = True
+    for neighbor in adj[current]:
+        if not arr[neighbor]:
+            printAllPaths(adj, neighbor, arr, pathstring + str(neighbor), target)
+    arr[current] = False
 
-# Driver code
-if __name__ == '__main__':
-	
-	V = 5
-	adj = [[] for i in range(V)]
+def graph(vertices, edges, noOfEdges):
+    adj = [[] for _ in range(vertices)]
 
-	adj = addEdge(adj, 0, 1, 10)
-	adj = addEdge(adj, 0, 4, 20)
-	adj = addEdge(adj, 1, 2, 30)
-	adj = addEdge(adj, 1, 3, 40)
-	adj = addEdge(adj, 1, 4, 50)
-	adj = addEdge(adj, 2, 3, 60)
-	adj = addEdge(adj, 3, 4, 70)
+    for edge in edges:
+        addEdge(adj, edge[0], edge[1])
 
-	printGraph(adj, V)
+    arr = [False] * vertices
 
-# This code is contributed by mohit kumar 29
+    for i in range(vertices):
+        if not arr[i]:
+            dfs(adj, i, arr)
+    print()
+    arr = [False] * vertices  # Reset arr for path finding
+    printAllPaths(adj, 0, arr, '0', 5)
+
+graph(vertices, edges, noOfEdges)
