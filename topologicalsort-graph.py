@@ -1,6 +1,6 @@
-edges=[[0,1],[0,2],[1,0],[1,3],[2,0],[2,4],[3,1],[3,4],[3,5],[4,2],[4,3],[4,5],[5,3],[5,4],[5,6],[6,5]]
+edges=[[2,3],[3,1],[4,0],[4,1],[5,0],[5,2]]
 noOfEdges=len(edges)
-vertices=7
+vertices=6
 
 def addEdge(adj:list[list], src:int, desc:int):
     adj[src].append(desc)
@@ -30,12 +30,12 @@ def graph(vertices:int, edges:list[list], noOfEdges:int):
         addEdge(adj, edges[i][0], edges[i][1])
 
 
-    arr=[False]*7
+    arr=[False]*6
     for i in range(vertices):
         if arr[i]==False:
             dfs(adj, i, arr)
     print()
-    arr=[False]*7
+    arr=[False]*6
     stack=[]
     for i in range(vertices):
         if arr[i]==False:
