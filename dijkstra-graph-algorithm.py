@@ -18,9 +18,22 @@ def printGraph(adj , v):
 v=6
 adj=[[] for i in range(v)]
 
+import heapq
 
-
-# def dijkstra(adj:list[list[int]], src:int):
+def dijkstra(adj:list[list[int]], src:int, vertices:int):
+    arr=[False]*vertices
+    distance=[float('inf')]*vertices
+    distance[src]=0
+    queue=[(0,src)]
+    while queue:
+        current_weight, current_node= heapq.heappop(queue)
+        if current_weight > distance[current_node]:
+            continue
+        for neighbor, weight in adj[current_node]:
+            if distance[current_node] + weight < distance[neighbor]:
+                distance[neighbor] = distance[current_node] + weight
+                heapq.heappush(queue, (distance[neighbor], neighbor))
+    return distance
 
 
 def graph(v, edges, noOfEdges):
@@ -31,3 +44,8 @@ def graph(v, edges, noOfEdges):
 
 graph(v, edges, noOfEdges)
 printGraph(adj,v)
+
+start_node = 0
+distances = dijkstra(adj, start_node, v)
+print("\nShortest distances from node", start_node, "to other nodes:")
+print(distances)
