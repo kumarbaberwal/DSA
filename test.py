@@ -6,7 +6,7 @@ noOfEdges = len(edges)
 def addEdge(adj, src, dest, weight):
     adj[src].append([dest, weight])
     adj[dest].append([src, weight])
-    return adj
+    print(adj)
 
 def printGraph(adj, v):
     for i in range(v):
@@ -24,11 +24,18 @@ def dijkstra(adj: list[list[int]], src: int, vertices: int):
         current_weight, current_node = heapq.heappop(queue)
         if visited[current_node]:
             continue
-        visited[current_node] = True
-        for neighbor, weight in adj[current_node]:
-            if distance[current_node] + weight < distance[neighbor]:
-                distance[neighbor] = distance[current_node] + weight
-                heapq.heappush(queue, (distance[neighbor], neighbor))
+
+        for i in adj[current_node]:
+            neighbour=i[0]
+            weight=i[1]
+            if distance[current_node]+ weight< distance[neighbour]:
+                distance[neighbour]=distance[current_node]+weight
+                heapq.heappush(queue, (distance[neighbour], neighbour))
+        # visited[current_node] = True
+        # for neighbor, weight in adj[current_node]:
+        #     if distance[current_node] + weight < distance[neighbor]:
+        #         distance[neighbor] = distance[current_node] + weight
+        #         heapq.heappush(queue, (distance[neighbor], neighbor))
     return distance
 
 v = 6
