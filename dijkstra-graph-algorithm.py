@@ -1,12 +1,12 @@
-edges=[[0,1,2],[0,2,4],[1,3,7],[1,2,1],[2,4,3],[3,5,1],[4,5,5]]
+edges=[[0,1,2], [0,2,4], [1,3,7], [1,2,1], [2,4,3], [3,5,1], [4,3,2], [4,5,5]]
 noOfEdges=len(edges)
 
-def addEdge(adj, src, dest, weight):
+def addEdge(adj:list[list[list[int]]], src:int, dest:int, weight:int) -> None:
     adj[src].append([dest,weight])
     adj[dest].append([src,weight])
     return adj
 
-def printGraph(adj , v):
+def printGraph(adj:list[list[list[int]]], v:int):
 
     for i in range(v):
         print('Node',i , 'makes an edge with')

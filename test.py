@@ -1,6 +1,6 @@
 import heapq
 
-edges = [[0, 1, 2], [0, 2, 4], [1, 3, 7], [1, 2, 1], [2, 4, 3], [3, 5, 1], [4, 5, 5]]
+edges = [[0, 1, 2], [0, 2, 4], [1, 3, 7], [1, 2, 1], [2, 4, 3], [3, 5, 1], [4,3,2], [4, 5, 5]]
 noOfEdges = len(edges)
 
 def addEdge(adj, src, dest, weight):
