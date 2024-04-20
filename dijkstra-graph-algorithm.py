@@ -4,7 +4,7 @@ noOfEdges=len(edges)
 def addEdge(adj:list[list[list[int]]], src:int, dest:int, weight:int) -> None:
     adj[src].append([dest,weight])
     adj[dest].append([src,weight])
-    return adj
+    print(adj)
 
 def printGraph(adj:list[list[list[int]]], v:int):
 
