@@ -25,12 +25,12 @@ def prims(adj:list[list[list[int]]], vertices:int) -> None:
                 weight = i[1]
                 if not vis[i[0]]:
                     heapq.heappush(queue, (weight, i[0]))    
-
+    print()
     print("Minimum Cost of MST :- ", mstCost)
     
 
 if __name__ == "__main__":
-    vertices = 5
+    vertices = 4
     edges = [[0, 1, 10], [0, 2, 15], [0, 3, 30], [1, 3, 40], [2, 3, 50]]
     noOfEdges = len(edges)
     graph(vertices, edges, noOfEdges)
