@@ -21,6 +21,14 @@ def bellmanfold(adj: list[list[list[int]]], src: int, vertices: int) -> None:
                 if distance[u] != float('inf') and distance[u] + weight < distance[v]:
                     distance[v] = distance[u] + weight
     
+    for j in range(vertices):
+            for edge in adj[j]:
+                u = j
+                v = edge[0]
+                weight = edge[1]
+                if distance[u] != float('inf') and distance[u] + weight < distance[v]:
+                    print('Negative weight cycle!')
+    
     print(distance)
 
 if __name__ == "__main__":
