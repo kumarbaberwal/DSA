@@ -1,7 +1,7 @@
 def addEdge(adj: list[list[list[int]]], src: int, dest: int, weight: int) -> None:
     adj[src].append([dest, weight])
     adj[dest].append([src, weight])
-    print(adj)
+    # print(adj)
 
 def graph(vertices: int, edges: list[list[int]], noOfEdges: int) -> None:
     adj = [[] for _ in range(vertices)]
