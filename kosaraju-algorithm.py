@@ -19,8 +19,6 @@ def dfs(adj:list[list[int]], curr:int, vis:list[bool]) -> None:
 def topSort(adj: list[list[int]], curr:int, vis:list[bool], stack:list) -> None:
     vis[curr]=True
     for i in adj[curr]:
-        if i>=vertices:
-            continue
         if not vis[i]:
             topSort(adj, i, vis, stack)
 
