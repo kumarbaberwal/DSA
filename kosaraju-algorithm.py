@@ -19,7 +19,7 @@ def dfs(adj:list[list[int]], curr:int, vis:list[bool]) -> None:
 def topSort(adj: list[list[int]], curr:int, vis:list[bool], stack:list) -> None:
     vis[curr]=True
     for i in adj[curr]:
-        if i>=len(vis):
+        if i>=vertices:
             continue
         if not vis[i]:
             topSort(adj, i, vis, stack)
@@ -38,7 +38,7 @@ def kosaraju(adj: list[list[int]], vertices: int) -> None:
     transAdj=[[] for _ in range(len(adj))]
     for i in range(len(adj)):
         for j in adj[i]:
-            transAdj[j].append[i]
+            transAdj[j].append(i)
 
     print(transAdj)
 
@@ -48,10 +48,10 @@ def kosaraju(adj: list[list[int]], vertices: int) -> None:
         curr=stack.pop()
         if not vis[curr]:
             dfs(transAdj, curr, vis)
-        print()
+            print()
 
 if __name__ == "__main__":
-    vertices = 4
+    vertices = 5
     edges = [[0, 2], [0, 3], [1, 0], [2, 1], [3, 4]]
     noOfEdges = len(edges)
     graph(vertices, edges, noOfEdges)
