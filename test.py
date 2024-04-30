@@ -1,3 +1,3 @@
 string='kumar'
-for i in string :
-    print(i)
+for i,j in string :
+    print(i,j)
