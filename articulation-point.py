@@ -3,7 +3,7 @@
 def addEdge(adj: list[list[int]], src: int, dest: int) -> None:
     adj[src].append(dest)
     adj[dest].append(src)
-    print(adj)
+    # print(adj)
 
 def dfs(adj: list[list[int]], curr: int, par: int, dt: list[bool], low: list[bool], vis: list[bool], time: list[int], ap : list[bool]) -> None:
     vis[curr] = True
