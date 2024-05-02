@@ -8,18 +8,19 @@ def graph(vertices: int, edges: list[list[int]], noOfEdges: int) -> None:
     for i in range(noOfEdges):
         addEdge(adj, edges[i][0], edges[i][1])
 
-    bfs(adj, vertices)
-
-def bfs(adj: list[list[int]], vertices: int) -> None:
-    queue = [0]
     vis = [False]*vertices
-    while queue:
-        cursor = queue.pop(0)
-        if vis[cursor] == False:
-            vis[cursor] = True
-            print(cursor, end=' ')
-            for i in adj[cursor]:
-                queue.append(i)
+
+    for i in range(vertices):
+        if vis[i] == False:
+            dfs(adj, i, vis)
+
+def dfs(adj: list[list[int]], curr: int, vis: list[bool]) -> None:
+    print(curr, end=' ')
+    vis[curr] = True
+    
+    for i in adj[curr]:
+        if vis[i] == False:
+            dfs(adj, i, vis)
 
 if __name__ == "__main__":
     vertices = 7
