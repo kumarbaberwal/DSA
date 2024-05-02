@@ -1,32 +1,28 @@
-edges=[[0,1],[0,2],[1,0],[1,3],[2,0],[2,4],[3,1],[3,4],[3,5],[4,2],[4,3],[4,5],[5,3],[5,4],[5,6],[6,5]]
-noOfEdges=len(edges)
-vertices=7
-
-def addEdge(adj,src,dest):
+def addEdge(adj: list[list[int]], src: int, dest: int) -> None:
     adj[src].append(dest)
-    # print(adj)
+    adj[dest].append(src)
 
-def graph(vertices,edges,noOfEdges):
-    adj=[[] for i in range(vertices)]
+def graph(vertices: int, edges: list[list[int]], noOfEdges: int) -> None:
+    adj = [[] for _ in range(vertices)]
 
     for i in range(noOfEdges):
-        addEdge(adj,edges[i][0],edges[i][1])
-    
-    bfs(adj)
+        addEdge(adj, edges[i][0], edges[i][1])
 
+    bfs(adj, vertices)
 
-def bfs(adj):
-    import queue
-    qu=queue.Queue()
-    arr=[False]*7
-    qu.put(0)
+def bfs(adj: list[list[int]], vertices: int) -> None:
+    queue = [0]
+    vis = [False]*vertices
+    while queue:
+        cursor = queue.pop(0)
+        if vis[cursor] == False:
+            vis[cursor] = True
+            print(cursor, end=' ')
+            for i in adj[cursor]:
+                queue.append(i)
 
-    while not qu.empty():
-        cursor=qu.get()
-        if arr[cursor]==False:
-            print(cursor,end=' ')
-            arr[cursor]=True
-            for i in range(len(adj[cursor])):
-                qu.put(adj[cursor][i])           
-
-graph(vertices,edges,noOfEdges)
+if __name__ == "__main__":
+    vertices = 7
+    edges = [[0,1],[0,2],[1,3],[2,4],[3,4],[3,5],[4,5],[5,6]]
+    noOfEdges = len(edges)
+    graph(vertices, edges, noOfEdges)
