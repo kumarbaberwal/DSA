@@ -20,13 +20,6 @@ def bfs(adj):
     qu=queue.Queue()
     arr=[False]*7
     qu.put(0)
-    # print(qu.empty())
-    # print(arr)
-    # print(len(adj[3]))
-    # for i in range(len(adj[0])):
-    #     print(adj[0][i])
-
-    # print()
 
     while not qu.empty():
         cursor=qu.get()
