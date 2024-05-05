@@ -9,7 +9,7 @@ def dijkstra(adj: list[list[int]], src: int, vertices: int) -> None:
     while queue:
         current_weight, current_node = heapq.heappop(queue)
         for neighbour, weight in adj[current_node]:
-            if current_weight + weight < distances[neighbour]:
+            if distances[current_node] + weight < distances[neighbour]:
                 distances[neighbour] = current_weight + weight
                 heapq.heappush(queue,(distances[neighbour],neighbour))
 
