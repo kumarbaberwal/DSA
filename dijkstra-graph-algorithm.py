@@ -1,53 +1,29 @@
-edges=[[0,1,2], [0,2,4], [1,3,7], [1,2,1], [2,4,3], [3,5,1], [4,3,2], [4,5,5]]
-noOfEdges=len(edges)
-
-def addEdge(adj:list[list[list[int]]], src:int, dest:int, weight:int) -> None:
+def addEdge(adj: list[list[int]], src: int, dest: int, weight: int) -> None:
     adj[src].append([dest,weight])
-    adj[dest].append([src,weight])
-    print(adj)
 
-def printGraph(adj:list[list[list[int]]], v:int):
-
-    for i in range(v):
-        print('Node',i , 'makes an edge with')
-
-        for j in adj[i]:
-            print('\tNode', j[0], 'with edge weight = ', j[1])
-        print()
-
-v=6
-adj=[[] for i in range(v)]
-
-import heapq
-
-def dijkstra(adj:list[list[int]], src:int, vertices:int):
-    arr=[False]*vertices
-    distance=[float('inf')]*vertices
-    distance[src]=0
-    queue=[(0,src)]
+def dijkstra(adj: list[list[int]], src: int, vertices: int) -> None:
+    distances = [float('inf')] * vertices
+    distances[src] = 0
+    import heapq
+    queue = [(0, src)]
     while queue:
-        # print()
-        # print(distance)
-        # print()
-        current_weight, current_node= heapq.heappop(queue)
-        for neighbor, weight in adj[current_node]:
-            if distance[current_node] + weight < distance[neighbor]:
-                distance[neighbor] = distance[current_node] + weight
-                heapq.heappush(queue, (distance[neighbor], neighbor))
-                # print(queue)
-    return distance
+        current_weight, current_node = heapq.heappop(queue)
+        for neighbour, weight in adj[current_node]:
+            if distances[current_node] + weight < distances[neighbour]:
+                distances[neighbour] = current_weight + weight
+                heapq.heappush(queue,(distances[neighbour],neighbour))
 
+    return distances
 
-def graph(v, edges, noOfEdges):
-
+def graph(vertices: int, edges: list[list[int]], noOfEdges: int) -> None:
+    adj = [[] for _ in range(vertices)]
     for i in range(noOfEdges):
-        addEdge(adj,edges[i][0],edges[i][1],edges[i][2])
-    
+        addEdge(adj, edges[i][0], edges[i][1], edges[i][2])
+    # print(adj)
+    print("Shortest Distance from the node 0: ", dijkstra(adj, 0, vertices))
 
-graph(v, edges, noOfEdges)
-printGraph(adj,v)
-
-start_node = 0
-distances = dijkstra(adj, start_node, v)
-print("\nShortest distances from node", start_node, "to other nodes:")
-print(distances)
+if __name__ == "__main__" :
+    vertices = 6
+    edges = [[0,1,2],[0,2,4],[1,0,2],[1,2,1],[1,3,7],[2,0,4],[2,1,1],[2,4,3],[3,1,7],[3,4,2],[3,5,1],[4,2,3],[4,3,2],[4,5,5],[5,3,1],[5,4,5]]
+    noOfEdges = len(edges)
+    graph(vertices, edges, noOfEdges)
