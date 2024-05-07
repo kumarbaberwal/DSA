@@ -12,6 +12,8 @@ def distances(adj: list[list[int]], vertices: int) -> None:
     for i in range(vertices):
         distance[i][i] = 0
 
+    print(distance)
+
     for k in range(vertices):
         for i in range(vertices):
             for j in range(vertices):
@@ -28,9 +30,9 @@ def graph(vertices: int, edges: list[list[int]], noOfEdges: int) -> None:
 
 if __name__ == "__main__" :
     vertices = 4
-    edges = [[0,1,8],[0,3,1],
-             [1,2,1],
-             [2,3,1],
-             [3,1,2],[3,2,9]]
+    edges = [[0,1,8],[0,2,1],
+             [1,3,1],
+             [2,1,2],[2,3,9],
+             [3,0,4]]
     noOfEdges = len(edges)
     graph(vertices, edges, noOfEdges)
