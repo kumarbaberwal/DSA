@@ -6,8 +6,8 @@ def graph(vertices: int, edges: list[list[int]], noOfEdges: int) -> None:
     adj = [[] for _ in range(vertices)]
     for i in range(noOfEdges):
         addEdge(adj, edges[i][0], edges[i][1], edges[i][2])
-
-    bellmanfold(adj, 0, vertices)
+    
+    print("Shortest distance from the Node 0: ", bellmanfold(adj, 0, vertices))
 
 def bellmanfold(adj: list[list[list[int]]], src: int, vertices: int) -> None:
     distance = [float('inf')] * vertices
@@ -29,7 +29,7 @@ def bellmanfold(adj: list[list[list[int]]], src: int, vertices: int) -> None:
                 if distance[u] != float('inf') and distance[u] + weight < distance[v]:
                     print('Negative weight cycle!')
     
-    print(distance)
+    return distance
 
 if __name__ == "__main__":
     vertices = 5
