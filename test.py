@@ -1,8 +1,7 @@
 def linearSearch(arr: list[int], val: int) -> str:
     for i in range(len(arr)):
         if val == arr[i]:
-            return "Element is Present in the Array."
-        
+            return "Element is Present in the Array."  
     return "Match NOT Found!"
 
 if __name__ == "__main__":
