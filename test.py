@@ -1,19 +1,13 @@
-def BinarySearch(arr: list[int], val: int) -> str:
-    arr.sort()
-    lb = 0 
-    ub = len(arr) - 1
-    mid = int((lb+ub)/2)
-    while lb < ub and arr[mid] != val:
-        if val < arr[mid]:
-            ub = mid - 1
-        else:
-            lb = mid + 1
-        mid = int((lb+ub)/2)
-    if arr [mid] == val : return "Match Found! at " + str(mid) 
-    else : return "Match Not Found!"
-
+def BubbleSort(arr: list[int]) -> list[int]:
+    for i in range(len(arr)):
+        for j in range(len(arr) - i - 1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
 
 
 if __name__ == "__main__":
-    arr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-    print(BinarySearch(arr, 200))
+    arr = [100, 80, 90, 70, 10, 50, 20, 40, 30, 0, 60]
+    arr2 = [8, 4, 9, 2, 10, 3]
+    print(BubbleSort(arr))
+    print(BubbleSort(arr2))
