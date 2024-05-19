@@ -1,10 +1,15 @@
-# Implementation of insertion sort
-a=[8,4,9,2,10,3,0,10,1,12]
-for i in range(len(a)):
-    first=a[i]
-    j=i-1
-    while j>=0 and first<a[j]:
-        a[j+1]=a[j]
-        j-=1
-    a[j+1]=first
-print(a)
+def insertionSort(arr: list[int]) -> list[int]:
+    for i in range(len(arr)):
+        pivot = arr[i]
+        j = i-1
+        while j >= 0 and pivot < arr[j]:
+            arr[j+1] = arr[j]
+            j = j-1
+        arr[j+1] = pivot
+    return arr
+
+if __name__ == "__main__":
+    arr = [100, 80, 90, 70, 10, 50, 20, 40, 30, 0, 60]
+    arr2 = [8, 4, 9, 2, 10, 3]
+    print(insertionSort(arr))
+    print(insertionSort(arr2))
