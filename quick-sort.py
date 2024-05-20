@@ -1,22 +1,31 @@
-# Implementation of quick sort 
-a=[8,4,9,2,10,3,0,10,1,12]
-def partition(a,start,end):
-    lb=start
-    ub=end
-    first=a[lb]
-    while (lb<ub):
-        while (a[lb]<=first):
-            lb=lb+1
-        while (a[ub]>first):
-            ub=ub-1
-        if (lb<ub):
-            a[lb],a[ub]=a[ub],a[lb]
-    a[start],a[ub]=a[ub],a[start]
-    return ub
-def quicksort(a,start,end):
-    if start<end:
-        index=partition(a,start,end)
-        quicksort(a,start,index-1)
-        quicksort(a,index+1,end)
-quicksort(a,0,len(a)-1)
-print(a)
+def quickSort(arr: list[int], start: int, end: int) -> list[int]:
+    if start < end:
+        index = partition(arr, start, end)
+        quickSort(arr, start, index-1)
+        quickSort(arr, index+1, end)
+
+    return arr
+
+def partition(arr: list[int], start: int, end: int) -> int:
+    low = start + 1
+    high = end
+    pivot = arr[start]
+    while True:
+        while low <= high and arr[low] <= pivot:
+            low += 1
+        while low <= high and arr[high] >= pivot:
+            high -= 1
+        if low <= high:
+            arr[low], arr[high] = arr[high], arr[low]
+        else:
+            break
+    arr[start], arr[high] = arr[high], arr[start]
+    return high 
+
+if __name__ == "__main__":
+    arr = [100, 80, 90, 70, 10, 50, 20, 40, 30, 0, 60]
+    arr2 = [8, 4, 9, 2, 10, 3]
+    arr3 = [8, 4, 9, 2, 10, 3, 0, 10, 1, 12]
+    print(quickSort(arr, 0, len(arr)-1))
+    print(quickSort(arr2, 0, len(arr2)-1))
+    print(quickSort(arr3, 0, len(arr3)-1))
