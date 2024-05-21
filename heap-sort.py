@@ -2,7 +2,7 @@ def HeapSort(arr: list[int]) -> list[int]:
     for i in range((len(arr)-1//2), -1, -1):
         Heapify(arr, len(arr), i)
 
-    for i in range(len(arr)-1, -1, -1):
+    for i in range(len(arr)-1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]
         Heapify(arr, i, 0)
 
