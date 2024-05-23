@@ -1,30 +1,44 @@
-def HeapSort(arr: list[int]) -> list[int]:
-    for i in range((len(arr)-1//2), -1, -1):
-        Heapify(arr, len(arr), i)
+class Stack:
+    def __init__(self) -> None:
+        self.stack = []
+        self.top = len(self.stack) - 1
+    
+    def push(self, item) -> None:
+        self.stack.append(item)
+        self.top += 1
+    def pop(self) -> None:
+        if self.top == -1:
+            return "UnderFlow!!!"
+        else:
+            self.top -= 1
+            return self.stack.pop()
+        
+    def display(self) -> None:
+        if self.top == -1:
+            print('Stack is Empty.')
+        else: 
+            print(self.stack[self.top], '>>> Top Element')
+            for i in range(self.top-1, -1, -1):
+                print(self.stack[i])
 
-    for i in range(len(arr)-1, 0, -1):
-        arr[i], arr[0] = arr[0], arr[i]
-        Heapify(arr, i, 0)
-
-    return arr
-
-def Heapify(arr: list[int], len: int, parent: int) -> None:
-    Largest = parent
-    left = 2 * parent + 1
-    right = 2 * parent + 2
-    if left < len and arr[left] > arr[Largest]:
-        Largest = left
-    if right < len and arr[right] > arr[Largest]:
-        Largest = right
-
-    if Largest != parent:
-        arr[parent], arr[Largest] = arr[Largest], arr[parent]
-        Heapify(arr, len, Largest)
+    def isEmpty(self) -> str:
+        if self.top == -1: return True
+        else: return False
+    
 
 if __name__ == "__main__":
-    arr = [100, 80, 90, 70, 10, 50, 20, 40, 30, 0, 60]
-    arr2 = [8, 4, 9, 2, 10, 3]
-    arr3 = [8, 4, 9, 2, 10, 3, 0, 10, 1, 12]
-    print(HeapSort(arr))
-    print(HeapSort(arr2))
-    print(HeapSort(arr3))
+    stack = Stack()
+    stack.push(8)
+    stack.push(9)
+    stack.push(10)
+    stack.push(2)
+    stack.push(5)
+    stack.display()
+    print(stack.isEmpty())
+    print(stack.pop())
+    print(stack.pop())
+    print(stack.pop())
+    print(stack.pop())
+    print(stack.pop())
+    stack.display()
+    print(stack.isEmpty())
