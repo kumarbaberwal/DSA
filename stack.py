@@ -21,7 +21,7 @@ class Stack:
             for i in range(self.top-1, -1, -1):
                 print(self.stack[i])
 
-    def isEmpty(self) -> str:
+    def isEmpty(self) -> bool:
         if self.top == -1: return True
         else: return False
     
