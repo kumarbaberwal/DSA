@@ -24,7 +24,7 @@ class LinkedList:
             Current_Node = self.head
             while Current_Node:
                 print(Current_Node.data)
-                curr_none = Current_Node.next
+                Current_Node = Current_Node.next
 
 if __name__ == '__main__':
     linkedlist = LinkedList()
