@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, data: int) -> None:
+    def __init__(self, data) -> None:
         self.data = data
         self.next = None
 
@@ -7,7 +7,7 @@ class LinkedList:
     def __init__(self) -> None:
         self.head = None
     
-    def InsertAtBegining(self, data: int) -> None:
+    def InsertAtBegining(self, data) -> None:
         NewNode = Node(data)
         if self.head is None:
             self.head = NewNode
@@ -26,7 +26,7 @@ class LinkedList:
                 print(Current_Node.data)
                 Current_Node = Current_Node.next
 
-    def InsertAtIndex(self, data: int, index: int) -> None:
+    def InsertAtIndex(self, data, index) -> None:
         newNode = Node(data)
         current_node = self.head
         current_index = 0
@@ -37,6 +37,17 @@ class LinkedList:
         temp.next = newNode
         newNode.next = current_node
 
+    def InsertAtEnd(self, data) -> None:
+        newNode = Node(data)
+        if self.head is None:
+            self.head = newNode
+            return
+        else:
+            current_node = self.head
+            while current_node.next:
+                current_node = current_node.next
+            current_node.next = newNode
+
 if __name__ == '__main__':
     linkedlist = LinkedList()
     linkedlist.InsertAtBegining(9)
@@ -44,4 +55,6 @@ if __name__ == '__main__':
     linkedlist.InsertAtBegining(11)
     linkedlist.InsertAtIndex(12, 1)
     linkedlist.InsertAtIndex(13, 1)
+    linkedlist.InsertAtEnd(20)
+    linkedlist.InsertAtEnd(30)
     linkedlist.printLL()
