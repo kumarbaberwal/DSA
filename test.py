@@ -48,6 +48,22 @@ class LinkedList:
                 current_node = current_node.next
             current_node.next = newNode
 
+    def updateNode(self, data, index) -> None:
+        current_node = self.head
+        position = 0
+        if index == position:
+            current_node.data = data
+            return
+        else:
+            while position != index and current_node:
+                position += 1
+                current_node = current_node.next
+            if position == index:
+                current_node.data = data
+                return
+            else:
+                print('Index is not Present!')
+
 if __name__ == '__main__':
     linkedlist = LinkedList()
     linkedlist.InsertAtBegining(9)
@@ -57,4 +73,6 @@ if __name__ == '__main__':
     linkedlist.InsertAtIndex(13, 1)
     linkedlist.InsertAtEnd(20)
     linkedlist.InsertAtEnd(30)
+    linkedlist.updateNode(14, 3)
+    linkedlist.updateNode(14, 9)
     linkedlist.printLL()
