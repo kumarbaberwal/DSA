@@ -63,6 +63,14 @@ class LinkedList:
                 return
             else:
                 print('Index is not Present!')
+    
+    def remove_first_node(self) -> None:
+        if self.head is None:
+            print('Linked List is Empty!')
+            return
+        else:
+            self.head = self.head.next
+
 
 if __name__ == '__main__':
     linkedlist = LinkedList()
@@ -74,5 +82,6 @@ if __name__ == '__main__':
     linkedlist.InsertAtEnd(20)
     linkedlist.InsertAtEnd(30)
     linkedlist.updateNode(14, 3)
-    linkedlist.updateNode(14, 9)
+    # linkedlist.updateNode(14, 9)
+    linkedlist.remove_first_node()
     linkedlist.printLL()
