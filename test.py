@@ -71,6 +71,15 @@ class LinkedList:
         else:
             self.head = self.head.next
 
+    def remove_last_node(self) -> None:
+        if self.head is None:
+            print('Linked List is Empty!')
+            return
+        else:
+            current_node = self.head
+            while current_node.next.next:
+                current_node = current_node.next
+            current_node.next = None
 
 if __name__ == '__main__':
     linkedlist = LinkedList()
@@ -83,5 +92,6 @@ if __name__ == '__main__':
     linkedlist.InsertAtEnd(30)
     linkedlist.updateNode(14, 3)
     # linkedlist.updateNode(14, 9)
-    linkedlist.remove_first_node()
+    # linkedlist.remove_first_node()
+    linkedlist.remove_last_node()
     linkedlist.printLL()
