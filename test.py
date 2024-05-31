@@ -81,6 +81,26 @@ class LinkedList:
                 current_node = current_node.next
             current_node.next = None
 
+    def remove_at_index(self, index) -> None:
+        if self.head is None:
+            print('Linked List is Empty!')
+            return
+        else:
+            current_node = self.head
+            position = 0
+            if position == index:
+                self.remove_first_node()
+                return
+            else:
+                while index != position+1 and current_node:
+                    position += 1
+                    current_node = current_node.next
+                if current_node:
+                    current_node.next = current_node.next.next
+                    return
+                else:
+                    print('Index is not present.')
+
 if __name__ == '__main__':
     linkedlist = LinkedList()
     linkedlist.InsertAtBegining(9)
@@ -94,4 +114,5 @@ if __name__ == '__main__':
     # linkedlist.updateNode(14, 9)
     # linkedlist.remove_first_node()
     linkedlist.remove_last_node()
+    linkedlist.remove_at_index(2)
     linkedlist.printLL()
