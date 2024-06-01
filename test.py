@@ -101,6 +101,18 @@ class LinkedList:
                 else:
                     print('Index is not present.')
 
+    def SizeOfLL(self) -> None:
+        if self.head is None:
+            print('Linked List is Empty')
+            return
+        else:
+            current_node = self.head
+            size = 0
+            while current_node:
+                size += 1
+                current_node = current_node.next
+            print(f"Size of Linked List is {size}")
+
 if __name__ == '__main__':
     linkedlist = LinkedList()
     linkedlist.InsertAtBegining(9)
@@ -115,4 +127,5 @@ if __name__ == '__main__':
     # linkedlist.remove_first_node()
     linkedlist.remove_last_node()
     linkedlist.remove_at_index(2)
+    linkedlist.SizeOfLL()
     linkedlist.printLL()
