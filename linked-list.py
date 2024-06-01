@@ -1,54 +1,131 @@
 class Node:
-    def __init__(self,data) -> None:
-        self.data=data
-        self.pointer=None
-
+    def __init__(self, data) -> None:
+        self.data = data
+        self.next = None
 
 class LinkedList:
     def __init__(self) -> None:
-        self.head=None
-
-    def InsertAtBegining(self,data):
-        newNode=Node(data)
-        if self.head==None:
-            self.head=newNode
+        self.head = None
+    
+    def InsertAtBegining(self, data) -> None:
+        NewNode = Node(data)
+        if self.head is None:
+            self.head = NewNode
             return
         else:
-            newNode.pointer=self.head
-            self.head=newNode
+            NewNode.next = self.head
+            self.head = NewNode
 
-    def display(self):
-        pointer=self.head
-        while pointer:
-            print(pointer.data)
-            pointer=pointer.pointer
+    def printLL(self) -> None:
+        if self.head is None:
+            print('Linked List is Empty!')
+            return
+        else:
+            Current_Node = self.head
+            while Current_Node:
+                print(Current_Node.data)
+                Current_Node = Current_Node.next
 
-    def InsertAtIndex(self,data,index):
-        newNode=Node(data)
-        pointer=self.head
-        i=0
-        while i<index:
-            temp=pointer
-            pointer=pointer.pointer
-            i=i+1
-        temp.pointer=newNode
-        newNode.pointer=pointer
+    def InsertAtIndex(self, data, index) -> None:
+        newNode = Node(data)
+        current_node = self.head
+        current_index = 0
+        while current_node and current_index != index:
+            temp = current_node
+            current_node = current_node.next
+            current_index += 1
+        temp.next = newNode
+        newNode.next = current_node
 
-    def InsertAtEnd(self,data):
-        newNode=Node(data)
-        pointer=self.head
-        while pointer:
-            temp=pointer
-            pointer=pointer.pointer
-        temp.pointer=newNode
+    def InsertAtEnd(self, data) -> None:
+        newNode = Node(data)
+        if self.head is None:
+            self.head = newNode
+            return
+        else:
+            current_node = self.head
+            while current_node.next:
+                current_node = current_node.next
+            current_node.next = newNode
 
+    def updateNode(self, data, index) -> None:
+        current_node = self.head
+        position = 0
+        if index == position:
+            current_node.data = data
+            return
+        else:
+            while position != index and current_node:
+                position += 1
+                current_node = current_node.next
+            if position == index:
+                current_node.data = data
+                return
+            else:
+                print('Index is not Present!')
+    
+    def remove_first_node(self) -> None:
+        if self.head is None:
+            print('Linked List is Empty!')
+            return
+        else:
+            self.head = self.head.next
 
+    def remove_last_node(self) -> None:
+        if self.head is None:
+            print('Linked List is Empty!')
+            return
+        else:
+            current_node = self.head
+            while current_node.next.next:
+                current_node = current_node.next
+            current_node.next = None
 
-linkedlist=LinkedList()
+    def remove_at_index(self, index) -> None:
+        if self.head is None:
+            print('Linked List is Empty!')
+            return
+        else:
+            current_node = self.head
+            position = 0
+            if position == index:
+                self.remove_first_node()
+                return
+            else:
+                while index != position+1 and current_node:
+                    position += 1
+                    current_node = current_node.next
+                if current_node:
+                    current_node.next = current_node.next.next
+                    return
+                else:
+                    print('Index is not present.')
 
-linkedlist.InsertAtBegining(5)
-linkedlist.InsertAtBegining(9)
-linkedlist.InsertAtBegining(10)
-linkedlist.InsertAtIndex(13,1)
-linkedlist.InsertAtEnd(40)
-linkedlist.display()
+    def SizeOfLL(self) -> None:
+        if self.head is None:
+            print('Linked List is Empty')
+            return
+        else:
+            current_node = self.head
+            size = 0
+            while current_node:
+                size += 1
+                current_node = current_node.next
+            print(f"Size of Linked List is {size}")
+
+if __name__ == '__main__':
+    linkedlist = LinkedList()
+    linkedlist.InsertAtBegining(9)
+    linkedlist.InsertAtBegining(10)
+    linkedlist.InsertAtBegining(11)
+    linkedlist.InsertAtIndex(12, 1)
+    linkedlist.InsertAtIndex(13, 1)
+    linkedlist.InsertAtEnd(20)
+    linkedlist.InsertAtEnd(30)
+    linkedlist.updateNode(14, 3)
+    # linkedlist.updateNode(14, 9)
+    # linkedlist.remove_first_node()
+    linkedlist.remove_last_node()
+    linkedlist.remove_at_index(2)
+    linkedlist.SizeOfLL()
+    linkedlist.printLL()
