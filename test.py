@@ -20,6 +20,20 @@ class LinkedList:
             current_node.next = newNode
             newNode.next = self.head
 
+    def prepend(self, data) -> None:
+        newNode = Node(data)
+        if not self.head:
+            self.head = newNode
+            self.head.next = self.head
+            return
+        else:
+            newNode.next = self.head
+            current_node = self.head
+            while current_node.next != self.head:
+                current_node = current_node.next
+            current_node.next = newNode
+            self.head = newNode
+
     def printCLL(self) -> None:
         if self.head is None:
             print('Circular Linked List is Empty!')
@@ -40,4 +54,5 @@ if __name__ == '__main__':
     linkedlist.append(3)
     linkedlist.append(4)
     linkedlist.append(5)
+    linkedlist.prepend(6)
     linkedlist.printCLL()
