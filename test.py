@@ -34,6 +34,20 @@ class LinkedList:
             current_node.next = newNode
             self.head = newNode
 
+    def insertAtIndex(self, data, index) -> None:
+        newNode = Node(data)
+        current_index = 0
+        if current_index == index:
+            self.append(data)
+        else:
+            current_node = self.head
+            while current_index < index - 1 and current_node.next != self.head:
+                current_index += 1
+                current_node = current_node.next
+
+            newNode.next = current_node.next
+            current_node.next = newNode
+
     def printCLL(self) -> None:
         if self.head is None:
             print('Circular Linked List is Empty!')
@@ -55,4 +69,5 @@ if __name__ == '__main__':
     linkedlist.append(4)
     linkedlist.append(5)
     linkedlist.prepend(6)
+    linkedlist.insertAtIndex(19, 3)
     linkedlist.printCLL()
