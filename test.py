@@ -3,7 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
-class LinkedList:
+class CircularLinkedList:
     def __init__(self) -> None:
         self.head = None
     
@@ -64,13 +64,13 @@ class LinkedList:
                     break
 
 if __name__ == '__main__':
-    linkedlist = LinkedList()
-    linkedlist.printCLL()
-    linkedlist.append(1)
-    linkedlist.append(2)
-    linkedlist.append(3)
-    linkedlist.append(4)
-    linkedlist.append(5)
-    linkedlist.prepend(6)
-    linkedlist.insertAtIndex(19, 3)
-    linkedlist.printCLL()
+    circularlinkedlist = CircularLinkedList()
+    circularlinkedlist.printCLL()
+    circularlinkedlist.append(1)
+    circularlinkedlist.append(2)
+    circularlinkedlist.append(3)
+    circularlinkedlist.append(4)
+    circularlinkedlist.append(5)
+    circularlinkedlist.prepend(6)
+    circularlinkedlist.insertAtIndex(19, 3)
+    circularlinkedlist.printCLL()
