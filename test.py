@@ -45,6 +45,8 @@ class LinkedList:
                 current_index += 1
                 current_node = current_node.next
 
+            if current_index != index:
+                print('Index not Found')
             newNode.next = current_node.next
             current_node.next = newNode
 
