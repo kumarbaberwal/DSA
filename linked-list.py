@@ -30,7 +30,7 @@ class LinkedList:
         newNode = Node(data)
         current_node = self.head
         current_index = 0
-        while current_node and current_index != index:
+        while current_node and current_index < index:
             temp = current_node
             current_node = current_node.next
             current_index += 1
