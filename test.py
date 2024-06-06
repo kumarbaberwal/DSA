@@ -45,11 +45,30 @@ class CircularLinkedList:
                 current_index += 1
                 current_node = current_node.next
 
-            if current_index != index:
+            if current_index != index - 1:
                 print('Index not Found')
                 return
             newNode.next = current_node.next
             current_node.next = newNode
+
+    def updateNode(self, data , index) -> None:
+        current_index = 0
+        current_node = self.head
+        if index < 0 :
+            print('Invalid Index')
+            return
+        else:
+            if current_index == index:
+                self.head.data = data
+                return
+            else:
+                while current_index < index - 1 and current_node.next != self.head:
+                    current_index += 1
+                    current_node = current_node.next
+                if current_index != index - 1:
+                    print('Index is not Present')
+                    return
+                current_node.next.data = data
 
     def printCLL(self) -> None:
         if self.head is None:
@@ -73,4 +92,5 @@ if __name__ == '__main__':
     circularlinkedlist.append(5)
     circularlinkedlist.prepend(6)
     circularlinkedlist.insertAtIndex(19, 3)
+    circularlinkedlist.updateNode(20, 3)
     circularlinkedlist.printCLL()
