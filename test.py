@@ -70,6 +70,20 @@ class CircularLinkedList:
                     return
                 current_node.next.data = data
 
+    def remove_first_node(self) -> None:
+        if not self.head:
+            print('Circular Linked List is Empty!')
+            return
+        elif self.head == self.head.next:
+            self.head = None
+            return
+        else:
+            last_node = self.head
+            while last_node.next != self.head:
+                last_node = last_node.next
+            self.head = self.head.next
+            last_node.next = self.head
+
     def printCLL(self) -> None:
         if self.head is None:
             print('Circular Linked List is Empty!')
@@ -93,4 +107,5 @@ if __name__ == '__main__':
     circularlinkedlist.prepend(6)
     circularlinkedlist.insertAtIndex(19, 3)
     circularlinkedlist.updateNode(20, 3)
+    circularlinkedlist.remove_first_node()
     circularlinkedlist.printCLL()
