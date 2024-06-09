@@ -97,6 +97,29 @@ class CircularLinkedList:
                 last_node = last_node.next
             last_node.next = self.head
 
+    def remove_at_index(self, index) -> None:
+        current_index = 0
+        if not self.head:
+            print('Circular Linked List is Empty!')
+            return
+        elif current_index == index:
+            if self.head.next == self.head:
+                self.head = None
+                return
+            else:
+                self.remove_first_node()
+        else:
+            current_node = self.head
+            previous_node = None
+            while current_node.next != self.head and current_index < index:
+                previous_node = current_node
+                current_node = current_node.next
+                current_index += 1
+            if current_index != index:
+                print("Index is not Present")
+                return
+            previous_node.next= current_node.next
+
     def printCLL(self) -> None:
         if self.head is None:
             print('Circular Linked List is Empty!')
@@ -122,4 +145,5 @@ if __name__ == '__main__':
     circularlinkedlist.updateNode(20, 3)
     circularlinkedlist.remove_first_node()
     circularlinkedlist.remove_last_node()
+    circularlinkedlist.remove_at_index(2)
     circularlinkedlist.printCLL()
