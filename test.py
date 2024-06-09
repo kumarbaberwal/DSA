@@ -120,6 +120,19 @@ class CircularLinkedList:
                 return
             previous_node.next= current_node.next
 
+    def sizeOfCLL(self) -> None:
+        if not self.head:
+            print('Circular Linked List is Empty')
+            return
+        else:
+            current_index = 0
+            current_node = self.head
+            while current_node.next != self.head:
+                current_index += 1
+                current_node = current_node.next
+
+            print(f'The size of circular linked list is {current_index + 1}')
+
     def printCLL(self) -> None:
         if self.head is None:
             print('Circular Linked List is Empty!')
@@ -146,4 +159,5 @@ if __name__ == '__main__':
     circularlinkedlist.remove_first_node()
     circularlinkedlist.remove_last_node()
     circularlinkedlist.remove_at_index(2)
+    circularlinkedlist.sizeOfCLL()
     circularlinkedlist.printCLL()
