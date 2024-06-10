@@ -2,23 +2,23 @@ class Node:
     def __init__(self, data) -> None:
         self.data = data
         self.next = None
+        self.previous = None
 
-class CircularLinkedList:
+class DoublyLinkedList:
     def __init__(self) -> None:
         self.head = None
     
     def append(self, data) -> None:
         newNode = Node(data)
-        if self.head is None:
+        if not self.head:
             self.head = newNode
-            self.head.next = self.head
             return
         else:
             current_node = self.head
-            while current_node.next != self.head:
+            while current_node.next:
                 current_node = current_node.next
             current_node.next = newNode
-            newNode.next = self.head
+            newNode.previous = current_node.next
 
     def prepend(self, data) -> None:
         newNode = Node(data)
@@ -134,30 +134,28 @@ class CircularLinkedList:
             print(f'The size of circular linked list is {current_index + 1}')
 
     def printCLL(self) -> None:
-        if self.head is None:
-            print('Circular Linked List is Empty!')
+        if not self.head:
+            print('Doubly Linked List is Empty')
             return
         else:
             current_node = self.head
             while current_node:
                 print(current_node.data)
                 current_node = current_node.next
-                if current_node == self.head:
-                    break
 
 if __name__ == '__main__':
-    circularlinkedlist = CircularLinkedList()
-    circularlinkedlist.printCLL()
-    circularlinkedlist.append(1)
-    circularlinkedlist.append(2)
-    circularlinkedlist.append(3)
-    circularlinkedlist.append(4)
-    circularlinkedlist.append(5)
-    circularlinkedlist.prepend(6)
-    circularlinkedlist.insertAtIndex(19, 3)
-    circularlinkedlist.updateNode(20, 3)
-    circularlinkedlist.remove_first_node()
-    circularlinkedlist.remove_last_node()
-    circularlinkedlist.remove_at_index(2)
-    circularlinkedlist.sizeOfCLL()
-    circularlinkedlist.printCLL()
+    doublyLL = DoublyLinkedList()
+    doublyLL.printCLL()
+    doublyLL.append(1)
+    doublyLL.append(2)
+    doublyLL.append(3)
+    doublyLL.append(4)
+    doublyLL.append(5)
+    # doublyLL.prepend(6)
+    # doublyLL.insertAtIndex(19, 3)
+    # doublyLL.updateNode(20, 3)
+    # doublyLL.remove_first_node()
+    # doublyLL.remove_last_node()
+    # doublyLL.remove_at_index(2)
+    # doublyLL.sizeOfCLL()
+    doublyLL.printCLL()
