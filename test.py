@@ -35,18 +35,24 @@ class DoublyLinkedList:
         newNode = Node(data)
         current_index = 0
         if current_index == index:
-            self.append(data)
+            self.prepend(data)
+            return
         else:
             current_node = self.head
-            while current_index < index - 1 and current_node.next != self.head:
-                current_index += 1
+            while current_index < index and current_node:
+                previous_node = current_node
                 current_node = current_node.next
-
-            if current_index != index - 1:
-                print('Index not Found')
+                current_index += 1
+            if current_index != index:
+                print("Given Index Not Found!")
                 return
-            newNode.next = current_node.next
-            current_node.next = newNode
+            if not current_node:
+                self.append(data)
+                return
+            newNode.next = current_node
+            newNode.previous = previous_node
+            previous_node.next = newNode
+            current_node.previous = newNode
 
     def updateNode(self, data , index) -> None:
         current_index = 0
@@ -159,12 +165,12 @@ if __name__ == '__main__':
     doublyLL.append(4)
     doublyLL.append(5)
     doublyLL.prepend(6)
-    # doublyLL.insertAtIndex(19, 3)
+    doublyLL.insertAtIndex(19, 3)
     # doublyLL.updateNode(20, 3)
     # doublyLL.remove_first_node()
     # doublyLL.remove_last_node()
     # doublyLL.remove_at_index(2)
     # doublyLL.sizeOfCLL()
     doublyLL.printCLL()
-    print()
-    doublyLL.printRCLL()
+    # print()
+    # doublyLL.printRCLL()
