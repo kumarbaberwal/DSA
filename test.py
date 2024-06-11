@@ -7,31 +7,28 @@ class Node:
 class DoublyLinkedList:
     def __init__(self) -> None:
         self.head = None
-    
+        self.tail = None
+
     def append(self, data) -> None:
         newNode = Node(data)
         if not self.head:
             self.head = newNode
+            self.tail = newNode
             return
         else:
-            current_node = self.head
-            while current_node.next:
-                current_node = current_node.next
-            current_node.next = newNode
-            newNode.previous = current_node.next
+            self.tail.next = newNode
+            newNode.previous = self.tail
+            self.tail = newNode
 
     def prepend(self, data) -> None:
         newNode = Node(data)
         if not self.head:
             self.head = newNode
-            self.head.next = self.head
+            self.tail = newNode
             return
         else:
             newNode.next = self.head
-            current_node = self.head
-            while current_node.next != self.head:
-                current_node = current_node.next
-            current_node.next = newNode
+            self.head.previous = newNode
             self.head = newNode
 
     def insertAtIndex(self, data, index) -> None:
@@ -143,15 +140,25 @@ class DoublyLinkedList:
                 print(current_node.data)
                 current_node = current_node.next
 
+    def printRCLL(self) -> None:
+        if not self.head:
+            print('Doubly Linked List is Empty')
+            return
+        else:
+            current_node = self.tail
+            while current_node:
+                print(current_node.data)
+                current_node = current_node.previous
+
 if __name__ == '__main__':
     doublyLL = DoublyLinkedList()
-    doublyLL.printCLL()
+    # doublyLL.printCLL()
     doublyLL.append(1)
     doublyLL.append(2)
     doublyLL.append(3)
     doublyLL.append(4)
     doublyLL.append(5)
-    # doublyLL.prepend(6)
+    doublyLL.prepend(6)
     # doublyLL.insertAtIndex(19, 3)
     # doublyLL.updateNode(20, 3)
     # doublyLL.remove_first_node()
@@ -159,3 +166,5 @@ if __name__ == '__main__':
     # doublyLL.remove_at_index(2)
     # doublyLL.sizeOfCLL()
     doublyLL.printCLL()
+    print()
+    doublyLL.printRCLL()
