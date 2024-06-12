@@ -71,17 +71,14 @@ class DoublyLinkedList:
 
     def remove_first_node(self) -> None:
         if not self.head:
-            print('Circular Linked List is Empty!')
+            print('Doubly Linked list is Empty')
             return
-        elif self.head == self.head.next:
+        if self.head == self.tail:
             self.head = None
-            return
+            self.tail = None
         else:
-            last_node = self.head
-            while last_node.next != self.head:
-                last_node = last_node.next
             self.head = self.head.next
-            last_node.next = self.head
+            self.head.previous = None
 
     def remove_last_node(self) -> None:
         if not self.head:
@@ -163,7 +160,7 @@ if __name__ == '__main__':
     doublyLL.prepend(6)
     doublyLL.insertAtIndex(19, 3)
     doublyLL.updateNode(20, 6)
-    # doublyLL.remove_first_node()
+    doublyLL.remove_first_node()
     # doublyLL.remove_last_node()
     # doublyLL.remove_at_index(2)
     # doublyLL.sizeOfCLL()
