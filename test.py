@@ -56,22 +56,18 @@ class DoublyLinkedList:
 
     def updateNode(self, data , index) -> None:
         current_index = 0
-        current_node = self.head
-        if index < 0 :
-            print('Invalid Index')
+        if current_index == index:
+            self.head.data = data
             return
         else:
-            if current_index == index:
-                self.head.data = data
+            current_node = self.head
+            while current_index < index and current_node:
+                current_node = current_node.next
+                current_index += 1
+            if current_index != index:
+                print('Index is not Present in the linked list')
                 return
-            else:
-                while current_index < index - 1 and current_node.next != self.head:
-                    current_index += 1
-                    current_node = current_node.next
-                if current_index != index - 1:
-                    print('Index is not Present')
-                    return
-                current_node.next.data = data
+            current_node.data = data
 
     def remove_first_node(self) -> None:
         if not self.head:
@@ -166,7 +162,7 @@ if __name__ == '__main__':
     doublyLL.append(5)
     doublyLL.prepend(6)
     doublyLL.insertAtIndex(19, 3)
-    # doublyLL.updateNode(20, 3)
+    doublyLL.updateNode(20, 6)
     # doublyLL.remove_first_node()
     # doublyLL.remove_last_node()
     # doublyLL.remove_at_index(2)
