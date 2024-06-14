@@ -119,18 +119,18 @@ class DoublyLinkedList:
         else:
             print('Index not present')
                  
-    def sizeOfCLL(self) -> None:
+    def sizeOfDLL(self) -> None:
         if not self.head:
-            print('Circular Linked List is Empty')
+            print('Doubly Linked List is Empty!')
             return
         else:
-            current_index = 0
+            size = 0
             current_node = self.head
-            while current_node.next != self.head:
-                current_index += 1
+            while current_node:
+                size += 1
                 current_node = current_node.next
-
-            print(f'The size of circular linked list is {current_index + 1}')
+            
+            print(f'The Size of Doubly Linked list is {size}')
 
     def printCLL(self) -> None:
         if not self.head:
@@ -166,7 +166,7 @@ if __name__ == '__main__':
     doublyLL.remove_first_node()
     doublyLL.remove_last_node()
     doublyLL.remove_at_index(2)
-    # doublyLL.sizeOfCLL()
+    doublyLL.sizeOfDLL()
     doublyLL.printCLL()
     # print()
     # doublyLL.printRCLL()
