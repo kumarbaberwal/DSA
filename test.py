@@ -92,28 +92,33 @@ class DoublyLinkedList:
             self.tail.next = None
 
     def remove_at_index(self, index) -> None:
-        current_index = 0
         if not self.head:
-            print('Circular Linked List is Empty!')
+            print('Doubly Linked List is Empty!')
             return
-        elif current_index == index:
-            if self.head.next == self.head:
-                self.head = None
-                return
-            else:
-                self.remove_first_node()
+        
+        current_node = self.head
+        current_index = 0
+        if index == 0 and current_node:
+            self.head = current_node.next
+            if self.head:
+                self.head.previous = None
+            if current_node == self.tail:
+                self.tail = None
+            return
         else:
-            current_node = self.head
-            previous_node = None
-            while current_node.next != self.head and current_index < index:
+            while current_index < index and current_node:
+                current_index += 1
                 previous_node = current_node
                 current_node = current_node.next
-                current_index += 1
-            if current_index != index:
-                print("Index is not Present")
-                return
-            previous_node.next= current_node.next
-
+        if current_node:
+            previous_node.next = current_node.next
+            if current_node.next:
+                current_node.next.previous = previous_node
+            if current_node == self.tail:
+                self.tail = previous_node
+        else:
+            print('Index not present')
+                 
     def sizeOfCLL(self) -> None:
         if not self.head:
             print('Circular Linked List is Empty')
@@ -160,7 +165,7 @@ if __name__ == '__main__':
     doublyLL.updateNode(20, 6)
     doublyLL.remove_first_node()
     doublyLL.remove_last_node()
-    # doublyLL.remove_at_index(2)
+    doublyLL.remove_at_index(2)
     # doublyLL.sizeOfCLL()
     doublyLL.printCLL()
     # print()
