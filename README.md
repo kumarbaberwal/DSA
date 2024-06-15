@@ -13,9 +13,11 @@
 </ol>
 </h4>
 <h2><b>Array :- </b></h2>
-<h4>Operations</h4>
+<h3>Operations</h3>
+<h4>
 <ol>
 <li>Sortest Element</li>
 <li>Linear Search</li>
 <li>Binary Search</li>
 </ol>
+</h4>
