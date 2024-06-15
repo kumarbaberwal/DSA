@@ -4,7 +4,7 @@
 <br>
 <h3>Topics Covered</h3>
 <h2><b>Array :- </b></h2>
-<h4>Operations
+<h4>Operations</h4>
 <ol>
 <li>Linear Search</li>
 <li>Binary Search</li>
