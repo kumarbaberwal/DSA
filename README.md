@@ -28,6 +28,7 @@
 <li>Using List</li>
 <li>Using Deque</li>
 <li>Using Class (Best Way)</li>
+</ol>
 <h3>Operations</h3>
 <ol>
 <li>Push</li>
