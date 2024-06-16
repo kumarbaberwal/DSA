@@ -57,5 +57,6 @@
 <li>Dequeue</li>
 <li>Display</li>
 <li>isEmpty</li>
+<li>Heap Queue</li>
 </ol>
 </h4>
