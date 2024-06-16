@@ -27,8 +27,7 @@
 <ol>
 <li>Using List</li>
 <li>Using Deque</li>
-<h3>Using Class (Best Way)</h3>
-<h4>
+<li>Using Class (Best Way)</li>
 <h3>Operations</h3>
 <ol>
 <li>Push</li>
