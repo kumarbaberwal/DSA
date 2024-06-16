@@ -19,6 +19,7 @@
 <li>Sortest Element</li>
 <li>Linear Search</li>
 <li>Binary Search</li>
+<li>Max Heap</li>
 </ol>
 </h4>
 <h2><b>Stack :- </b></h2>
