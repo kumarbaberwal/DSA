@@ -30,8 +30,8 @@
 <li>Using Class (Best Way)</li>
 </ol>
 </h4>
-<h4>
 <h3>Operations</h3>
+<h4>
 <ol>
 <li>Push</li>
 <li>Pop</li>
