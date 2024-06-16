@@ -60,3 +60,4 @@
 <li>Heap Queue</li>
 </ol>
 </h4>
+<h2><b>Linked List :- </b></h2>
