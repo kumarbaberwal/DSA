@@ -21,3 +21,19 @@
 <li>Binary Search</li>
 </ol>
 </h4>
+<h2><b>Stack :- </b></h2>
+<h3>Implementations : </h3>
+<h4>
+<ol>
+<li>Using List</li>
+<li>Using Deque</li>
+<h3>Using Class (Best Way)</h3>
+<h4>
+<h3>Operations</h3>
+<ol>
+<li>Push</li>
+<li>Pop</li>
+<li>Display</li>
+<li>isEmpty</li>
+</ol>
+</h4>
