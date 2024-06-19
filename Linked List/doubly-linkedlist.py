@@ -132,7 +132,7 @@ class DoublyLinkedList:
             
             print(f'The Size of Doubly Linked list is {size}')
 
-    def printCLL(self) -> None:
+    def printDLL(self) -> None:
         if not self.head:
             print('Doubly Linked List is Empty')
             return
@@ -142,7 +142,7 @@ class DoublyLinkedList:
                 print(current_node.data)
                 current_node = current_node.next
 
-    def printRCLL(self) -> None:
+    def printRDLL(self) -> None:
         if not self.head:
             print('Doubly Linked List is Empty')
             return
