@@ -27,7 +27,7 @@ class BinarySeachTree:
                 self._insert(node.right, data)
 
     def inorderTraversal(self):
-        if not self.root:
+        if self.root:
             self._inorderTraversal(self.root)
         else:
             print('Binary Search Tree is Empty!')
@@ -41,4 +41,9 @@ class BinarySeachTree:
 
 if __name__ == "__main__":
     bst = BinarySeachTree()
+    # bst.inorderTraversal()
+    bst.insert(9)
+    bst.insert(10)
+    bst.insert(8)
+    bst.insert(11)
     bst.inorderTraversal()
