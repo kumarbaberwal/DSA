@@ -26,6 +26,22 @@ class BinarySeachTree:
             else:
                 self._insert(node.right, data)
 
+    def search(self, value):
+        if self.root:
+            self._search(self.root, value)
+        else:
+            print('Binary Search Tree is Empty')
+    
+    def _search(self, node, value):
+        if not node:
+            print(f'{value} is not present in the Binary Search Tree')
+        elif node.data == value:
+            print(f'{value} is Present in the Binary Search Tree')
+        elif value < node.data:
+            self._search(node.left, value)
+        else:
+            self._search(node.right, value)
+
     def inorderTraversal(self):
         if self.root:
             self._inorderTraversal(self.root)
@@ -47,3 +63,8 @@ if __name__ == "__main__":
     bst.insert(8)
     bst.insert(11)
     bst.inorderTraversal()
+    bst.search(8)
+    bst.search(9)
+    bst.search(10)
+    bst.search(11)
+    bst.search(12)
