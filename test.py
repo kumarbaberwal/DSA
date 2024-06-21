@@ -55,8 +55,13 @@ class BinarySeachTree:
             self._inorderTraversal(node.right)
 
     def findMin(self):
-
-
+        return self._minValueNode(self.root) if self.root else print('Binary Search Tree is Empty')
+    
+    def _minValueNode(self, node):
+        current = node
+        while current.left:
+            current = current.left
+        print(current.data)
 
 if __name__ == "__main__":
     bst = BinarySeachTree()
@@ -71,3 +76,4 @@ if __name__ == "__main__":
     bst.search(10)
     bst.search(11)
     bst.search(12)
+    bst.findMin()
