@@ -54,6 +54,9 @@ class BinarySeachTree:
             print(node.data)
             self._inorderTraversal(node.right)
 
+    def findMin(self):
+
+
 
 if __name__ == "__main__":
     bst = BinarySeachTree()
