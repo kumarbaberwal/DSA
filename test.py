@@ -54,6 +54,18 @@ class BinarySeachTree:
             print(node.data)
             self._inorderTraversal(node.right)
 
+    def preorderTraversal(self):
+        if self.root:
+            self._preorderTraversal(self.root)
+        else:
+            print('Binary Search Tree is Empty')
+
+    def _preorderTraversal(self, node):
+        if node:
+            print(node.data)
+            self._preorderTraversal(node.left)
+            self._preorderTraversal(node.right)
+
     def findMin(self):
         return self._minValueNode(self.root) if self.root else print('Binary Search Tree is Empty')
     
@@ -87,3 +99,4 @@ if __name__ == "__main__":
     bst.search(12)
     bst.findMin()
     bst.findMax()
+    bst.preorderTraversal()
