@@ -61,7 +61,16 @@ class BinarySeachTree:
         current = node
         while current.left:
             current = current.left
-        print(current.data)
+        print(f'Minimum Value : {current.data}')
+
+    def findMax(self):
+        return self._maxValueNode(self.root) if self.root else print('Binary Search Tree is Empty')
+    
+    def _maxValueNode(self, node):
+        current = node
+        while current.right:
+            current = current.right
+        print(f'Maximum Value : {current.data}')
 
 if __name__ == "__main__":
     bst = BinarySeachTree()
@@ -77,3 +86,4 @@ if __name__ == "__main__":
     bst.search(11)
     bst.search(12)
     bst.findMin()
+    bst.findMax()
