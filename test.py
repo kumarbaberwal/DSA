@@ -93,6 +93,17 @@ class BinarySeachTree:
             current = current.right
         print(f'Maximum Value : {current.data}')
 
+    def height(self):
+        return print(f'The height of Binary Search Tree is: {self._height(self.root)}') if self.root else print('Binary Search Tree is Empty')
+    
+    def _height(self, node):
+        if not node:
+            return 0
+        else:
+            leftHeight = self._height(node.left)
+            rightHeight = self._height(node.right)
+            return max(leftHeight, rightHeight) + 1
+
 if __name__ == "__main__":
     bst = BinarySeachTree()
     # bst.inorderTraversal()
@@ -110,3 +121,4 @@ if __name__ == "__main__":
     bst.findMax()
     bst.preorderTraversal()
     bst.postorderTraversal()
+    bst.height()
