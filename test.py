@@ -42,6 +42,26 @@ class BinarySeachTree:
         else:
             self._search(node.right, value)
 
+    def delete(self, data):
+        return self._delete(self.root, data) if self.root else print('Binary Search Tree is Empty')
+    
+    def _delete(self, node, data):
+        if not node:
+            return None
+        elif data < node.data:
+            node.left = self._delete(node.left, data)
+        elif data > node.data:
+            node.right = self._delete(node.right, data)
+        else:
+            if not node.left:
+                return node.right
+            elif not node.right:
+                return node.left
+            
+            node.data = self._minValueNode(node.right)
+            node.right = self._delete(node.right, node.data)
+        return node
+
     def inorderTraversal(self):
         if self.root:
             self._inorderTraversal(self.root)
@@ -83,6 +103,7 @@ class BinarySeachTree:
         while current.left:
             current = current.left
         print(f'Minimum Value : {current.data}')
+        return current.data
 
     def findMax(self):
         return self._maxValueNode(self.root) if self.root else print('Binary Search Tree is Empty')
