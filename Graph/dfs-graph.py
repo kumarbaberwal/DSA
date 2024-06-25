@@ -10,10 +10,13 @@ def dfs(adj:list[list], current:int, arr:list[bool]):
     print(current,end=' ')
     arr[current]=True
     
-    for i in range(len(adj[current])):
-        curr=adj[current][i]
-        if arr[curr]==False:
-            dfs(adj, curr, arr)
+    for i in adj[current]:
+        if arr[i]==False:
+            dfs(adj, i, arr)
+    # for i in range(len(adj[current])):
+    #     curr=adj[current][i]
+    #     if arr[curr]==False:
+    #         dfs(adj, curr, arr)
             
 def printAllPaths(adj:list[list], current:int, arr:list[bool], pathstring:str, target:int):
     if current==target:

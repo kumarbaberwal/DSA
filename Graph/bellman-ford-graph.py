@@ -7,9 +7,9 @@ def graph(vertices: int, edges: list[list[int]], noOfEdges: int) -> None:
     for i in range(noOfEdges):
         addEdge(adj, edges[i][0], edges[i][1], edges[i][2])
     
-    print("Shortest distance from the Node 0: ", bellmanfold(adj, 0, vertices))
+    print("Shortest distance from the Node 0: ", bellmanford(adj, 0, vertices))
 
-def bellmanfold(adj: list[list[list[int]]], src: int, vertices: int) -> None:
+def bellmanford(adj: list[list[list[int]]], src: int, vertices: int) -> None:
     distance = [float('inf')] * vertices
     distance[src] = 0
     for i in range(vertices - 1):
