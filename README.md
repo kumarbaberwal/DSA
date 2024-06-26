@@ -88,7 +88,6 @@
 <h4>
 <ol>
 <li>Binary Search Tree</li>
-<li>Adelson-Velsky and Landis tree</li>
 </ol>
 </h4>
 <h3>Operations</h3>
