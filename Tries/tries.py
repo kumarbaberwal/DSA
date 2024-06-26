@@ -29,7 +29,7 @@ class Tries:
             if not current_node.children[index]:
                 return False
             current_node = current_node.children[index]
-        return True
+        return current_node.isEndOfWord
     
 if __name__ == '__main__':
     tries = Tries()
