@@ -7,7 +7,7 @@ class Tries:
     def __init__(self) -> None:
         self.root = TrieNode()
 
-    def insert(self, word):
+    def insert(self, word: str) -> None:
         current_node = self.root
         for char in word.lower():
             if 'a' <= char <= 'z':
@@ -17,13 +17,13 @@ class Tries:
                 current_node = current_node.children[index]
         current_node.isEndOfWord = True
     
-    def search(self, word):
+    def search(self, word: str) -> None:
         if self._search(word):
             print(f'{word} is Present in Tries')
         else:
             print(f'{word} is not Present in Tries')
 
-    def _search(self, word):
+    def _search(self, word: str) -> bool:
         current_node = self.root
         for char in word:
             if 'a' <= char <= 'z':
