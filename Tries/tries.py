@@ -9,11 +9,12 @@ class Tries:
 
     def insert(self, word):
         current_node = self.root
-        for i in word:
-            index = ord(i) - ord('a')
-            if not current_node.children[index]:
-                current_node.children[index] = TrieNode()
-            current_node = current_node.children[index]
+        for char in word.lower():
+            if 'a' <= char <= 'z':
+                index = ord(char) - ord('a')
+                if not current_node.children[index]:
+                    current_node.children[index] = TrieNode()
+                current_node = current_node.children[index]
         current_node.isEndOfWord = True
     
     def search(self, word):
@@ -24,11 +25,12 @@ class Tries:
 
     def _search(self, word):
         current_node = self.root
-        for i in word:
-            index = ord(i) - ord('a')
-            if not current_node.children[index]:
-                return False
-            current_node = current_node.children[index]
+        for char in word:
+            if 'a' <= char <= 'z':
+                index = ord(char) - ord('a')
+                if not current_node.children[index]:
+                    return False
+                current_node = current_node.children[index]
         return current_node.isEndOfWord
     
 if __name__ == '__main__':
