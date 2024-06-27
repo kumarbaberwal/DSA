@@ -1,39 +1,29 @@
-# row,column=3,3
-# graph=[[0]*column]*row
+def addEdge(adj: list[list[int]], src: int, dest: int) -> None:
 
-# print(graph)
-# graph[0][0]=1
-# print(graph)
+    # Parameters:
+    # adj (list[list[int]]): The adjacency list of the graph.
+    # src (int): The source vertex.
+    # dest (int): The destination vertex.
 
-# Graphs using adjacency list 
+    adj[src].append(dest)
 
-def addedge(graph1, src, dest):
-    graph1[src].append(dest)
-    print(graph1)
+def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
+    adj = [[] for _ in range(vertices)]
 
-v=4
+    for edge in edges:
+        addEdge(adj, edge[0], edge[1])
 
-def graph(v, edges, noOfEdges):
-    graph1=[0]*v
+    return adj
 
-    for i in range(len(graph1)):
-        graph1[i]=[]
-
-    for i in range(noOfEdges):
-        addedge(graph1,edges[i][0],edges[i][1])
-
-    adjList(graph1,v)
-
-def adjList(graph1,v):
-    for i in range(v):
-        print(i,' -> ',end='')
-        for x in graph1[i]:
-            print(x, " ",end='')
-
+def printGraph(adj: list[list[int]], vertices: int) -> None:
+    for i in range(vertices):
+        print(i, '-->', end='  ')
+        for j in adj[i]:
+            print(j, end='  ')
         print()
 
-edges=[[0,2],[1,2],[1,3],[2,0],[2,1],[2,3],[3,1],[3,2]]
-
-noOfEdges=len(edges)
-print(noOfEdges)
-graph(v,edges,noOfEdges)
+if __name__ == "__main__":
+    vertices = 4
+    edges = [[0, 2], [1, 2], [1, 3], [2, 0], [2, 1], [2, 3], [3, 1], [3, 2]]
+    adjancency_list = createGraph(vertices, edges)
+    printGraph(adjancency_list, vertices)
