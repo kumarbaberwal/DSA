@@ -1,30 +1,30 @@
-edges=[[0,2,2],[1,2,10],[1,3,0],[2,3,-1]]
-noOfEdges=len(edges)
+def addEdge(adj: list[list[int]], src: int, dest: int, weight: int) -> None:
 
-def addEdge(adj, src, dest, weight):
+    # Parameters:
+    # adj (list[list[int]]): The adjacency list of the graph.
+    # src (int): The source vertex.
+    # dest (int): The destination vertex.
+    # weight (int): The Edge weight from source to destination vertex.
+
     adj[src].append([dest,weight])
-    adj[dest].append([src,weight])
+
+def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
+    adj = [[] for _ in range(vertices)]
+
+    for edge in edges:
+        addEdge(adj, edge[0], edge[1], edge[2])
+
     return adj
 
-def printGraph(adj , v):
-
-    for i in range(v):
-        print('Node',i , 'makes an edge with')
-
-        for j in adj[i]:
-            print('\tNode', j[0], 'with edge weight = ', j[1])
+def printGraph(adj: list[list[int]], vertices: int) -> None:
+    for src in range(vertices):
+        print('Node', src, 'Makes an edge with')
+        for dest, weight in adj[src]:
+            print('\tNode', dest, 'with edge weight', weight)
         print()
 
-v=4
-adj=[[] for i in range(v)]
-
-print(adj)
-
-def graph(v, edges, noOfEdges):
-
-    for i in range(noOfEdges):
-        addEdge(adj,edges[i][0],edges[i][1],edges[i][2])
-    
-
-graph(v, edges, noOfEdges)
-printGraph(adj,v)
+if __name__ == "__main__":
+    vertices = 4
+    edges = [[0, 2, 2], [1, 2, 10], [1, 3, 0], [2, 0, 2], [2, 1, 10], [2, 3, -1], [3, 1, 0], [3, 2, -1]]
+    adjancency_list = createGraph(vertices, edges)
+    printGraph(adjancency_list, vertices)
