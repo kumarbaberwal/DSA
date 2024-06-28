@@ -8,6 +8,16 @@ def addEdge(adj: list[list[int]], src: int, dest: int) -> None:
     adj[src].append(dest)
 
 def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
+
+    """
+    Parameters:
+    vertices (int): The number of vertices in the graph.
+    edges (list[list[int]]): The edges of the graph, where each edge is a list [src, dest].
+
+    Returns:
+    list[list[int]]: The adjacency list of the graph.
+    """
+
     adj = [[] for _ in range(vertices)]
 
     for edge in edges:
