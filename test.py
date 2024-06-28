@@ -8,6 +8,18 @@ def addEdge(adj: list[list[int]], src: int, dest: int) -> None:
     adj[src].append(dest)
 
 def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
+
+    """
+    Creates an adjacency list for a graph with the given vertices and edges.
+
+    Parameters:
+    vertices (int): The number of vertices in the graph.
+    edges (list[list[int]]): The edges of the graph, where each edge is a list [src, dest].
+
+    Returns:
+    list[list[int]]: The adjacency list of the graph.
+    """
+
     adj = [[] for _ in range(vertices)]
 
     for edge in edges:
@@ -16,6 +28,16 @@ def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
     return adj
 
 def dfs(adj: list[list[int]], src: int, visited: int) -> None:
+
+    """
+    Performs a depth-first search (DFS) traversal of the graph starting from the source vertex.
+
+    Parameters:
+    adj (list[list[int]]): The adjacency list of the graph.
+    src (int): The source vertex.
+    visited (list[bool]): A list indicating whether each vertex has been visited.
+    """
+
     print(src, end='  ')
     visited[src] = True
     for neighbour in adj[src]:
