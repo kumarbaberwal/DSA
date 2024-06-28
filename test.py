@@ -48,11 +48,11 @@ def bfs(adj: list[list[int]], src: int, vertices: int) -> None:
     visited = [False] * vertices
     queue = [src]
     while queue:
-        current_node = queue.pop(0)
-        if not visited[current_node]:
-            visited[current_node] = True
-            print(current_node, end='  ')
-            for neighbour in adj[current_node]:
+        current_vertex = queue.pop(0)
+        if not visited[current_vertex]:
+            visited[current_vertex] = True
+            print(current_vertex, end='  ')
+            for neighbour in adj[current_vertex]:
                 queue.append(neighbour)
 
 if __name__ == "__main__":
