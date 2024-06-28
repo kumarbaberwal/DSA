@@ -1,59 +1,60 @@
-edges=[[0,1],[0,2],[1,0],[1,3],[2,0],[2,4],[3,1],[3,4],[3,5],[4,2],[4,3],[4,5],[5,3],[5,4],[5,6],[6,5]]
-noOfEdges=len(edges)
-vertices=7
+def addEdge(adj: list[list[int]], src: int, dest: int) -> None:
 
-def addEdge(adj:list[list], src:int, desc:int):
-    adj[src].append(desc)
-    # print(adj)
+    # Parameters:
+    # adj (list[list[int]]): The adjacency list of the graph.
+    # src (int): The source vertex.
+    # dest (int): The destination vertex.
 
-def dfs(adj:list[list], current:int, arr:list[bool]):
-    print(current,end=' ')
-    arr[current]=True
-    
-    for i in adj[current]:
-        if arr[i]==False:
-            dfs(adj, i, arr)
-    # for i in range(len(adj[current])):
-    #     curr=adj[current][i]
-    #     if arr[curr]==False:
-    #         dfs(adj, curr, arr)
-            
-def printAllPaths(adj:list[list], current:int, arr:list[bool], pathstring:str, target:int):
-    if current==target:
-        print(pathstring)
-        return
-    arr[current]=True
-    for i in range(len(adj[current])):
-        curr=adj[current][i]
-        if arr[curr]==False:
-            printAllPaths(adj, curr, arr, pathstring+str(curr), target)
-            arr[curr]=False
+    adj[src].append(dest)
 
-# def printAllPaths(adj, current, arr, pathstring, target):
-#     if current == target:
-#         print(pathstring)
-#         return
-#     arr[current] = True
-#     for neighbor in adj[current]:
-#         if not arr[neighbor]:
-#             printAllPaths(adj, neighbor, arr, pathstring + str(neighbor), target)
-#     arr[current] = False
+def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
 
-def graph(vertices:int, edges:list[list], noOfEdges:int):
-    adj=[[] for i in range(vertices)]
+    """
+    Creates an adjacency list for a graph with the given vertices and edges.
 
-    for i in range(noOfEdges):
-        addEdge(adj, edges[i][0], edges[i][1])
+    Parameters:
+    vertices (int): The number of vertices in the graph.
+    edges (list[list[int]]): The edges of the graph, where each edge is a list [src, dest].
 
+    Returns:
+    list[list[int]]: The adjacency list of the graph.
+    """
 
-    arr=[False]*7
-    # print(arr)
-    # print(adj)
+    adj = [[] for _ in range(vertices)]
+
+    for edge in edges:
+        addEdge(adj, edge[0], edge[1])
+
+    return adj
+
+def dfs(adj: list[list[int]], src: int, visited: int) -> None:
+
+    """
+    Performs a depth-first search (DFS) traversal of the graph starting from the source vertex.
+
+    Parameters:
+    adj (list[list[int]]): The adjacency list of the graph.
+    src (int): The source vertex.
+    visited (list[bool]): A list indicating whether each vertex has been visited.
+    """
+
+    print(src, end='  ')
+    visited[src] = True
+    for neighbour in adj[src]:
+        if not visited[neighbour]:
+            dfs(adj, neighbour, visited)
+
+if __name__ == "__main__":
+    vertices = 7
+    edges = [[0, 1], [0, 2],
+             [1, 0], [1, 3],
+             [2, 0], [2, 4],
+             [3, 1], [3, 4], [3, 5],
+             [4, 2], [4, 3], [4, 5],
+             [5, 3], [5, 4], [5, 6],
+             [6, 5]]
+    adjacency_list = createGraph(vertices, edges)
+    visited = [False] * vertices
     for i in range(vertices):
-        if arr[i]==False:
-            dfs(adj, i, arr)
-    print()
-    arr=[False]*7
-    printAllPaths(adj, 0, arr, '0', 5)
-
-graph(vertices, edges, noOfEdges)
+        if not visited[i]:
+            dfs(adjacency_list, i, visited)
