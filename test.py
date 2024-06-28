@@ -15,16 +15,12 @@ def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
 
     return adj
 
-def bfs(adj: list[list[int]], src: int, vertices: int) -> None:
-    visited = [False] * vertices
-    queue = [src]
-    while queue:
-        current_node = queue.pop(0)
-        if not visited[current_node]:
-            visited[current_node] = True
-            print(current_node, end='  ')
-            for neighbour in adj[current_node]:
-                queue.append(neighbour)
+def dfs(adj: list[list[int]], src: int, visited: int) -> None:
+    print(src, end='  ')
+    visited[src] = True
+    for neighbour in adj[src]:
+        if not visited[neighbour]:
+            dfs(adj, neighbour, visited)
 
 if __name__ == "__main__":
     vertices = 7
@@ -35,5 +31,6 @@ if __name__ == "__main__":
              [4, 2], [4, 3], [4, 5],
              [5, 3], [5, 4], [5, 6],
              [6, 5]]
-    adjancency_list = createGraph(vertices, edges)
-    bfs(adjancency_list, 0, vertices)
+    adjacency_list = createGraph(vertices, edges)
+    visited = [False] * vertices
+    dfs(adjacency_list, 0, visited)
