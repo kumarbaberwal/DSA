@@ -38,11 +38,22 @@ def dfs(adj: list[list[int]], src: int, visited: int) -> None:
     visited (list[bool]): A list indicating whether each vertex has been visited.
     """
 
-    print(src, end='  ')
+    print(src, end= '  ')
     visited[src] = True
     for neighbour in adj[src]:
         if not visited[neighbour]:
             dfs(adj, neighbour, visited)
+
+def bfs(adj: list[list[int]], src: int, vertices: int) -> None:
+    visited = [False] * vertices
+    queue = [src]
+    while queue:
+        current_node = queue.pop(0)
+        if not visited[current_node]:
+            visited[current_node] = True
+            print(current_node, end='  ')
+            for neighbour in adj[current_node]:
+                queue.append(neighbour)
 
 if __name__ == "__main__":
     vertices = 7
@@ -56,3 +67,5 @@ if __name__ == "__main__":
     adjacency_list = createGraph(vertices, edges)
     visited = [False] * vertices
     dfs(adjacency_list, 0, visited)
+    print()
+    bfs(adjacency_list, 0, vertices)
