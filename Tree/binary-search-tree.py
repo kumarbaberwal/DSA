@@ -118,7 +118,10 @@ class BinarySeachTree:
         print(f'Maximum Value : {current.data}')
 
     def height(self):
-        return print(f'The height of Binary Search Tree is: {self._height(self.root)}') if self.root else print('Binary Search Tree is Empty')
+        if self.root:
+            return print(f'The height of Binary Search Tree is: {self._height(self.root)}')
+        else:
+            print('Binary Search Tree is Empty')
     
     def _height(self, node):
         if not node:
