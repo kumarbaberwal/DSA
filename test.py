@@ -4,7 +4,6 @@ def addEdge(adj: list[list[int]], src: int, dest: int) -> None:
     # adj (list[list[int]]): The adjacency list of the graph.
     # src (int): The source vertex.
     # dest (int): The destination vertex.
-    # weight (int): The Edge weight from source to destination vertex.
 
     adj[src].append(dest)
 
@@ -16,7 +15,7 @@ def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
 
     return adj
 
-def bfs(adj: list[list[int]],src: int , vertices: int) -> None:
+def bfs(adj: list[list[int]], src: int, vertices: int) -> None:
     visited = [False] * vertices
     queue = [src]
     while queue:
