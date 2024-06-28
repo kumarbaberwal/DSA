@@ -35,5 +35,5 @@ if __name__ == "__main__":
              [4, 2], [4, 3], [4, 5],
              [5, 3], [5, 4], [5, 6],
              [6, 5]]
-    adjancency_list = createGraph(vertices, edges)
-    bfs(adjancency_list, 0, vertices)
+    adjacency_list = createGraph(vertices, edges)
+    bfs(adjacency_list, 0, vertices)
