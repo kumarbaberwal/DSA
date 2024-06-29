@@ -11,7 +11,7 @@
 <ol>
 <li>Breadth First Search</li>
 <li>Depth Firsth Search</li>
-<li></li>
+<li>Dijkstra's algorithm</li>
 <li></li>
 <li></li>
 <li></li>
