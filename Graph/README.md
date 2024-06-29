@@ -11,8 +11,8 @@
 <ol>
 <li>Breadth First Search</li>
 <li>Depth Firsth Search</li>
+<li>Print All Paths From Source to Target</li>
 <li>Dijkstra's algorithm</li>
-<li></li>
 <li></li>
 <li></li>
 <li></li>
