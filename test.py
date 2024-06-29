@@ -1,4 +1,4 @@
-def addEdge(adj: list[list[int]], src: int, dest: int, weight: int) -> None:
+def addEdge(adj: list[list[list[int, int]]], src: int, dest: int, weight: int) -> None:
 
     # Parameters:
     # adj (list[list[int]]): The adjacency list of the graph.
@@ -55,7 +55,18 @@ def bfs(adj: list[list[int]], src: int, vertices: int) -> None:
             for neighbour in adj[current_vertex]:
                 queue.append(neighbour)
 
-def dijkstra(adj: list[list[int]], src: int, vertices: int) -> list[int]:
+def dijkstra(adj: list[list[list[int, int]]], src: int, vertices: int) -> list[int]:
+    """
+    Implements Dijkstra's algorithm to find the shortest path from the source vertex to all other vertices.
+
+    Parameters:
+    adj (list[list[list[int, int]]]): The adjacency list of the graph, where each entry is a list of lists [neighbour, weight].
+    src (int): The source vertex.
+    vertices (int): The number of vertices in the graph.
+
+    Returns:
+    list[int]: The list of shortest distances from the source vertex to each other vertex.
+    """
     distance = [float('inf')] * vertices
     distance[src] = 0
     import heapq
@@ -81,4 +92,6 @@ if __name__ == "__main__":
     # dfs(adjacency_list, 0, visited)
     # print()
     # bfs(adjacency_list, 0, vertices)
+    print(adjacency_list)
+    print()
     print(f'The Shortest path from O is {dijkstra(adjacency_list, 0, vertices)}')
