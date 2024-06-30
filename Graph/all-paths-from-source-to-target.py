@@ -41,10 +41,10 @@ def allPaths(adj: list[list[int]], current_vertex: int, target: int, visited: li
     visited[current_vertex] = True
     if current_vertex == target:
         print(path)
-    
-    for neighbour in adj[current_vertex]:
-        if not visited[neighbour]:
-            allPaths(adj, neighbour, target, visited, path + ' ' + str(neighbour))
+    else:
+        for neighbour in adj[current_vertex]:
+            if not visited[neighbour]:
+                allPaths(adj, neighbour, target, visited, path + ' ' + str(neighbour))
     visited[current_vertex] = False
 
 if __name__ == "__main__":
