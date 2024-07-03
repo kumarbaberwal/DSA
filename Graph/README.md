@@ -14,8 +14,8 @@
 <li>Print All Paths From Source to Target</li>
 <li>Cycle Detection (Directed Graph)</li>
 <li>Cycle Detection (Undirected Graph)</li>
-<li>Dijkstra's algorithm</li>
-<li></li>
+<li>Dijkstra's Algorithm</li>
+<li>BellmanFord Algorithm</li>
 <li></li>
 <li></li>
 </ol>
