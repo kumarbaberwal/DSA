@@ -1,11 +1,13 @@
-def addEdge(adj: list[list[int]], src: int, dest: int) -> None:
+def addEdge(adj: list[list[int]], src: int, dest: int, weight: int) -> None:
 
     """Parameters:
     adj (list[list[int]]): The adjacency list of the graph.
     src (int): The source vertex.
-    dest (int): The destination vertex."""
+    dest (int): The destination vertex.
+    weight(int): The Weight from source to destination
+    """
 
-    adj[src].append(dest)
+    adj[src].append([dest, weight])
 
 def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
 
@@ -23,43 +25,42 @@ def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
     adj = [[] for _ in range(vertices)]
 
     for edge in edges:
-        addEdge(adj, edge[0], edge[1])
+        addEdge(adj, edge[0], edge[1], edge[2])
 
     return adj
 
-def isCyclicUnDirectedGraph(adj: list[list[int]], current_vertex: int, visited: list[bool], parent_vertex: int) -> bool:
+def bellmanford(adj: list[list[list[int, int]]], source: int, vertices: int) -> list[int]:
     """
-    Checks if there is a cycle in the directed graph using DFS.
+    Implements the Bellman-Ford algorithm to find the shortest paths from a source vertex.
 
     Parameters:
-    adj (list[list[int]]): The adjacency list of the graph.
-    current_vertex (int): The current vertex being explored.
-    visited (list[bool]): A list indicating whether each vertex has been visited.
-    parent_vertex (int): The parent vertex of the current vertex.
+    adj (list[list[list[int]]]): The adjacency list of the graph.
+    source (int): The source vertex.
+    vertices (int): The number of vertices in the graph.
 
     Returns:
-    bool: True if a cycle is detected, False otherwise.
+    list[int]: The shortest distances from the source vertex to each other vertex.
     """
-    visited[current_vertex] = True
-    for neighbour in adj[current_vertex]:
-        if not visited[neighbour]:
-            if isCyclicUnDirectedGraph(adj, neighbour, visited, current_vertex):
-                return True
-        elif neighbour != parent_vertex:
-            return True
-    return False
+    distances = [float('inf')] * vertices
+    distances[source] = 0
+    for i in range(vertices - 1):
+        for src in range(vertices):
+            for neighbour, weight in adj[src]:
+                if distances[src] != float('inf') and distances[neighbour] > distances[src] + weight:
+                    distances[neighbour] = distances[src] + weight
+    for src in range(vertices):
+        for neighbour, weight in adj[src]:
+                if distances[src] != float('inf') and distances[neighbour] > distances[src] + weight:
+                    print('Negative Cycle Detection')
+                    return []
+    return distances
 
 if __name__ == "__main__":
-    vertices = 6
-    # edges = [[0, 1], [0, 4], [1, 0], [1, 2], [1, 4], [2, 1], [2, 3], [3, 2], [4, 0], [4, 1], [4, 5], [5, 4]]
-    edges = [[0, 1], [0, 4], [1, 0], [1, 2], [2, 1], [2, 3], [3, 2], [4, 0], [4, 5], [5, 4]]
+    vertices = 5
+    edges = [[0, 1, 2], [0, 2, 4], [1, 2, -4], [2, 3, 2], [3, 4, 4], [4, 1, -1]]
     adjacency_list = createGraph(vertices, edges)
-    visited = [False] * vertices
-
-    # Check for cycles starting from each vertex
-    for i in range(vertices):
-        if not visited[i]:
-            print("The graph is Cyclic" if isCyclicUnDirectedGraph(adjacency_list, 0, visited, -1) else "The Graph is not Cyclic")
-            break
+    distances = bellmanford(adjacency_list, 0, vertices)
+    if distances:
+        print(f'Shortest Distance from Vertex 0 is {distances}')
 
     
