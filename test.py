@@ -63,5 +63,4 @@ if __name__ == "__main__":
     if distances:
         print(f'Shortest Distance from Vertex 0 is {distances}')
 
-   
     
