@@ -21,5 +21,6 @@
 <li>Kosaraju's Algorithm (SCC)</li>
 <li>Tarjans's Algorithm (Bridge in Graph)</li>
 <li>Tarjans's Algorithm (Articulation Point in Graph)</li>
+<li>Floyd Warshall Algorithm</li>
 </ol>
 </h4>
