@@ -135,5 +135,6 @@
 <li>Topological Sort</li>
 <li>Kosaraju's Algorithm (SCC)</li>
 <li>Tarjans's Algorithm (Bridge in Graph)</li>
+<li>Tarjans's Algorithm (Articulation Point in Graph)</li>
 </ol>
 </h4>
