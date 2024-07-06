@@ -46,7 +46,7 @@ def dfs(adj: list[list[int]], src: int, visited: int) -> None:
         if not visited[neighbour]:
             dfs(adj, neighbour, visited)
 
-def topSort(adj: list[list[int]], current_vertex: int, visited: list[bool], stack: list[int]) -> None:
+def topologicalSort(adj: list[list[int]], current_vertex: int, visited: list[bool], stack: list[int]) -> None:
     """
     Performs a topological sort on the graph and stores the vertices in a stack.
 
@@ -59,7 +59,7 @@ def topSort(adj: list[list[int]], current_vertex: int, visited: list[bool], stac
     visited[current_vertex] = True
     for neighbour in adj[current_vertex]:
         if not visited[neighbour]:
-            topSort(adj, neighbour, visited, stack)
+            topologicalSort(adj, neighbour, visited, stack)
     stack.append(current_vertex)
 
 def kosaraju(adj: list[list[int]], vertices: int) -> None:
@@ -75,7 +75,7 @@ def kosaraju(adj: list[list[int]], vertices: int) -> None:
     visited = [False] * vertices
     for vertex in range(vertices):
         if not visited[vertex]:
-            topSort(adj, vertex, visited, stack)
+            topologicalSort(adj, vertex, visited, stack)
     
     # Step 2: Create a transposed graph
     transAdj = [[] for _ in range(vertices)]
