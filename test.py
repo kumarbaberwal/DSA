@@ -29,38 +29,36 @@ def createGraph(vertices: int, edges: list[list[int]]) -> list[list[int]]:
 
     return adj
 
-def bellmanford(adj: list[list[list[int, int]]], source: int, vertices: int) -> list[int]:
+def prims(adj: list[list[list[int, int]]], vertices :int) -> int:
     """
-    Implements the Bellman-Ford algorithm to find the shortest paths from a source vertex.
+    Implements Prim's algorithm to find the cost of the Minimum Spanning Tree (MST).
 
     Parameters:
-    adj (list[list[list[int]]]): The adjacency list of the graph.
-    source (int): The source vertex.
+    adj (List[List[Tuple[int, int]]]): The adjacency list of the graph.
     vertices (int): The number of vertices in the graph.
 
     Returns:
-    list[int]: The shortest distances from the source vertex to each other vertex.
+    int: The total cost of the MST.
     """
-    distances = [float('inf')] * vertices
-    distances[source] = 0
-    for i in range(vertices - 1):
-        for src in range(vertices):
-            for neighbour, weight in adj[src]:
-                if distances[src] != float('inf') and distances[neighbour] > distances[src] + weight:
-                    distances[neighbour] = distances[src] + weight
-    for src in range(vertices):
-        for neighbour, weight in adj[src]:
-                if distances[src] != float('inf') and distances[neighbour] > distances[src] + weight:
-                    print('Negative Cycle Detection')
-                    return []
-    return distances
+    import heapq
+    queue = [(0, 0)]
+    visited = [False] * vertices
+    mstCost = 0
+    while queue:
+        current_weight, current_vertex = heapq.heappop(queue)
+        if not visited[current_vertex]:
+            visited[current_vertex] = True
+            mstCost += current_weight
+
+            for neighbour, weight in adj[current_vertex]:
+                if not visited[neighbour]:
+                    heapq.heappush(queue, (weight, neighbour))
+    return mstCost
 
 if __name__ == "__main__":
     vertices = 5
-    edges = [[0, 1, 2], [0, 2, 4], [1, 2, -4], [2, 3, 2], [3, 4, 4], [4, 1, -1]]
+    edges = [[0, 1, 10], [0, 2, 15], [0, 3, 30], [1, 0, 10], [1, 3, 40], [2, 0, 15], [2, 3, 50], [3, 0, 30], [3, 1, 40], [3, 2, 50]]
     adjacency_list = createGraph(vertices, edges)
-    distances = bellmanford(adjacency_list, 0, vertices)
-    if distances:
-        print(f'Shortest Distance from Vertex 0 is {distances}')
+    print(f'The Minimum cost of MST is : {prims(adjacency_list, vertices)}')
 
     
