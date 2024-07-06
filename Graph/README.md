@@ -17,6 +17,6 @@
 <li>Dijkstra's Algorithm</li>
 <li>BellmanFord Algorithm</li>
 <li>Prim's Algorithm (MST)</li>
-<li></li>
+<li>Kosaraju's Algorithm (SCC)</li>
 </ol>
 </h4>
