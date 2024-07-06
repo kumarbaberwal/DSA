@@ -132,6 +132,7 @@
 <li>Dijkstra's Algorithm</li>
 <li>BellmanFord Algorithm</li>
 <li>Prim's Algorithm (MST)</li>
+<li>Topological Sort</li>
 <li>Kosaraju's Algorithm (SCC)</li>
 <li>Tarjans's Algorithm (Bridge in Graph)</li>
 </ol>
