@@ -16,7 +16,7 @@
 <li>Cycle Detection (Undirected Graph)</li>
 <li>Dijkstra's Algorithm</li>
 <li>BellmanFord Algorithm</li>
-<li></li>
+<li>Prim's Algorithm (MST)</li>
 <li></li>
 </ol>
 </h4>
