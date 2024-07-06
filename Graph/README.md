@@ -18,5 +18,6 @@
 <li>BellmanFord Algorithm</li>
 <li>Prim's Algorithm (MST)</li>
 <li>Kosaraju's Algorithm (SCC)</li>
+<li>Tarjans's Algorithm (Bridge in Graph)</li>
 </ol>
 </h4>
